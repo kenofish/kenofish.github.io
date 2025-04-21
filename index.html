@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keno Fish | Official Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff5555;
+      --secondary: #1a1a1a;
+      --accent: #00ffff;
+      --light: #f8f8f8;
+      --dark: #0a0a0a;
+      --text: #333;
+      --text-light: #f8f8f8;
+      --font-heading: 'Archivo Black', sans-serif;
+      --font-body: 'Archivo', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      --shadow-hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(10, 10, 10, 0.95);
+      color: var(--text-light);
+      padding: 20px 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav a {
+      position: relative;
+      font-weight: bold;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .cart-icon {
+      position: relative;
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: var(--accent);
+      color: var(--dark);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    
+    .hero {
+      height: 100vh;
+      min-height: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 96px);
+      margin-bottom: 20px;
+      line-height: 1.1;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 50px;
+      transition: var(--transition);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .product-image-container {
+      height: 350px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+    
+    .product-info {
+      padding: 25px;
+    }
+    
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      max-width: 450px;
+      height: 100%;
+      background: var(--dark);
+      color: var(--text-light);
+      z-index: 2000;
+      transition: var(--transition);
+      padding: 30px;
+      overflow-y: auto;
+    }
+    
+    .cart-modal.active {
+      right: 0;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1500;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 40px;
+    }
+    
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--dark);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: var(--transition);
+    }
+    
+    .social-icon:hover {
+      transform: scale(1.1) rotate(10deg);
+      background: var(--secondary);
+    }
+    
+    .loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .loader.active {
+      display: flex;
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 15px;
+      }
+      
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="#" class="logo">KENO FISH</a>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="#socials">Socials</a></li>
+          <li>
+            <a href="#" class="cart-icon" id="cartIcon">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Keno Fish performing" class="hero-bg">
+    <div class="hero-content">
+      <h1>KENO FISH</h1>
+      <p>Vintage Sound. Modern Fire. Out of the Deep, into the Noise.</p>
+      <div>
+        <a href="#products" class="btn">Shop Now</a>
+        <a href="#socials" class="btn btn-outline">Follow Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 60px; position: relative;">
+        OFFICIAL MERCH
+        <span style="content: ''; display: block; width: 80px; height: 4px; background: var(--primary); margin: 20px auto 0;"></span>
+      </h2>
+      <div class="product-grid" id="productGrid">
+        <div class="product-card">
+          <div class="product-image-container">
+            <span style="position: absolute; top: 15px; right: 15px; background: var(--accent); color: var(--dark); padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; z-index: 2;">OFFICIAL</span>
+            <img src="https://i.imgur.com/YOUR_IMAGE_ID.jpg" alt="Keno Fish Tee" class="product-image" id="productImage">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title" id="productTitle">Keno Fish Official Tee</h3>
+            <p class="product-price" id="productPrice">£11.50 - £15.00</p>
+            <div class="size-selector">
+              <label for="size">SELECT SIZE:</label>
+              <select id="size">
+                <option value="VARIANT_S">S - £11.50</option>
+                <option value="VARIANT_M">M - £13</option>
+                <option value="VARIANT_L">L - £11.50</option>
+                <option value="VARIANT_XL">XL - £13</option>
+              </select>
+            </div>
+            <button class="btn add-to-cart" id="addToCartBtn">ADD TO CART</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="socials" id="socials" style="background: linear-gradient(135deg, var(--primary), var(--accent)); text-align: center; padding: 80px 0;">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 30px; color: var(--dark);">CONNECT WITH US</h2>
+      <div class="social-icons">
+        <a href="https://instagram.com/kenofishband" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/kenofishband" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/kenofishband" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://youtube.com/kenofishband" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://open.spotify.com/artist/kenofish" class="social-icon" target="_blank"><i class="fab fa-spotify"></i></a>
+        <a href="https://kenofish.bandcamp.com" class="social-icon" target="_blank"><i class="fab fa-bandcamp"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cart-modal" id="cartModal">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid var(--primary);">
+      <h3>YOUR CART</h3>
+      <button class="close-cart" id="closeCart" style="background: none; border: none; color: var(--text-light); font-size: 24px; cursor: pointer;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems" style="margin-bottom: 30px;"></div>
+    <div style="font-size: 24px; font-weight: bold; text-align: right; margin-bottom: 30px;">
+      Total: $<span id="cartTotal">0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" style="width: 100%; padding: 15px; font-size: 18px;">PROCEED TO CHECKOUT</button>
+  </div>
+  
+  <div class="overlay" id="overlay"></div>
+
+  <div class="loader" id="loader">
+    <div style="width: 50px; height: 50px; border: 5px solid rgba(255, 255, 255, 0.3); border-radius: 50%; border-top-color: var(--primary); animation: spin 1s ease-in-out infinite;"></div>
+    <p style="color: white; margin-top: 20px;">Processing your order...</p>
+  </div>
+
+  <footer style="background: var(--secondary); color: var(--text-light); text-align: center; padding: 40px 0;">
+    <div class="container">
+      <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+        <a href="#home">Home</a>
+        <a href="#products">Shop</a>
+        <a href="#socials">Socials</a>
+        <a href="#">Contact</a>
+      </div>
+      <div style="font-size: 14px; opacity: 0.7;">
+        &copy; 2025 Keno Fish. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ====== CONFIGURATION ======
+      const API_BASE_URL = 'https://kenofish.onrender.com'; // Replace with your Render URL
+      const MOCKUP_IMAGE_URL = 'https://imgur.com/a/zareJ8q'; // Your product mockup
+      const PRODUCT_DATA = {
+        id: 'YOUR_PRINTFUL_PRODUCT_ID',
+        name: 'Keno Fish Official Tee',
+        variants: [
+          { id: 'VARIANT_S', size: 'S', price: 28.00 },
+          { id: 'VARIANT_M', size: 'M', price: 28.00 },
+          { id: 'VARIANT_L', size: 'L', price: 28.00 },
+          { id: 'VARIANT_XL', size: 'XL', price: 30.00 }
+        ]
+      };
+
+      // ====== DOM ELEMENTS ======
+      const cartIcon = document.getElementById('cartIcon');
+      const cartModal = document.getElementById('cartModal');
+      const closeCart = document.getElementById('closeCart');
+      const cartItems = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+      const overlay = document.getElementById('overlay');
+      const loader = document.getElementById('loader');
+      const sizeSelect = document.getElementById('size');
+      const addToCartBtn = document.getElementById('addToCartBtn');
+      const productImage = document.getElementById('productImage');
+      const productTitle = document.getElementById('productTitle');
+      const productPrice = document.getElementById('productPrice');
+
+      // ====== INITIALIZE PRODUCT ======
+      productImage.src = MOCKUP_IMAGE_URL;
+      productTitle.textContent = PRODUCT_DATA.name;
+      
+      // ====== CART STATE ======
+      let cart = JSON.parse(localStorage.getItem('kenoFishCart')) || [];
+
+      // ====== EVENT LISTENERS ======
+      cartIcon.addEventListener('click', toggleCart);
+      closeCart.addEventListener('click', toggleCart);
+      overlay.addEventListener('click', toggleCart);
+      checkoutBtn.addEventListener('click', processCheckout);
+      addToCartBtn.addEventListener('click', addToCart);
+      sizeSelect.addEventListener('change', updateSelectedVariant);
+
+      // Initialize cart display
+      updateCartDisplay();
+
+      // ====== CART FUNCTIONS ======
+      function toggleCart() {
+        cartModal.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+
+      function updateSelectedVariant() {
+        const selectedId = sizeSelect.value;
+        const variant = PRODUCT_DATA.variants.find(v => v.id === selectedId);
+        productPrice.textContent = `$${variant.price.toFixed(2)}`;
+      }
+
+      function addToCart() {
+        const selectedId = sizeSelect.value;
+        const variant = PRODUCT_DATA.variants.find(v => v.id === selectedId);
+        
+        const product = {
+          id: variant.id,
+          name: `${PRODUCT_DATA.name} (${variant.size})`,
+          price: variant.price,
+          image: MOCKUP_IMAGE_URL,
+          quantity: 1
+        };
+
+        // Check if already in cart
+        const existingItem = cart.find(item => item.id === product.id);
+        if (existingItem) {
+          existingItem.quantity++;
+        } else {
+          cart.push(product);
+        }
+
+        updateCart();
+        
+        // Show added to cart feedback
+        addToCartBtn.textContent = '✓ ADDED';
+        setTimeout(() => {
+          addToCartBtn.textContent = 'ADD TO CART';
+        }, 2000);
+      }
+
+      function updateCart() {
+        localStorage.setItem('kenoFishCart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartDisplay();
+      }
+
+      function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        cartCount.textContent = count;
+      }
+
+      function updateCartDisplay() {
+        cartItems.innerHTML = '';
+        
+        if (cart.length === 0) {
+          cartItems.innerHTML = '<p style="text-align: center;">Your cart is empty</p>';
+          cartTotal.textContent = '0.00';
+          return;
+        }
+
+        let total = 0;
+        
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          
+          const cartItem = document.createElement('div');
+          cartItem.style.display = 'flex';
+          cartItem.style.gap = '15px';
+          cartItem.style.marginBottom = '20px';
+          cartItem.style.paddingBottom = '20px';
+          cartItem.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+          cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+            <div style="flex: 1;">
+              <h4 style="font-weight: bold; margin-bottom: 5px;">${item.name}</h4>
+              <p style="color: var(--primary); margin-bottom: 5px;">$${item.price.toFixed(2)} × ${item.quantity}</p>
+              <button style="background: none; border: none; color: var(--accent); font-size: 14px; cursor: pointer;" data-id="${item.id}">
+                <i class="fas fa-trash"></i> Remove
+              </button>
+            </div>
+          `;
+          cartItems.appendChild(cartItem);
+        });
+
+        // Add remove event listeners
+        document.querySelectorAll('[data-id]').forEach(button => {
+          button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+          });
+        });
+
+        cartTotal.textContent = total.toFixed(2);
+      }
+
+      async function processCheckout() {
+        if (cart.length === 0) {
+          alert('Your cart is empty!');
+          return;
+        }
+        
+        loader.classList.add('active');
+        
+        try {
+          const orderData = {
+            items: cart,
+            customerInfo: {
+              name: "Customer Name", // In real app, collect from form
+              email: "customer@example.com",
+              address: "123 Main St"
+            }
+          };
+
+          // Call your backend API
+          const response = await fetch(`${API_BASE_URL}/api/orders`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+          });
+
+          const result = await response.json();
+          
+          if (result.success) {
+            // Redirect to Printful checkout
+            window.location.href = result.checkout_url;
+          } else {
+            throw new Error(result.message || 'Checkout failed');
+          }
+          
+        } catch (error) {
+          console.error('Checkout error:', error);
+          alert(`Error: ${error.message}`);
+        } finally {
+          loader.classList.remove('active');
+        }
+      }
+
+      // Initialize selected variant
+      updateSelectedVariant();
+    });
+  </script>
+</body>
+</html>
