@@ -24,6 +24,8 @@
       --black: #000000;
       --text-light: #FFF8F0;
       --text-dark: #2A2A2A;
+      --gray: #888888;
+      --gray-light: #CCCCCC;
       
       /* Typography */
       --font-heading: 'Playfair Display', serif;
@@ -162,6 +164,18 @@
     .btn-outline:hover {
       background-color: var(--orange);
       color: var(--text-light);
+    }
+    
+    .btn-disabled {
+      background-color: var(--gray-light);
+      color: var(--gray);
+      cursor: not-allowed;
+    }
+    
+    .btn-disabled:hover {
+      transform: none;
+      background-color: var(--gray-light);
+      box-shadow: var(--shadow-sm);
     }
     
     .text-center {
@@ -463,51 +477,47 @@
       transform: translateY(-3px);
     }
     
-    /* ========== GALLERY SECTION ========== */
-    .gallery {
-      padding-bottom: var(--space-xxl);
+    /* ========== MERCH SECTION ========== */
+    .merch {
+      background-color: var(--cream);
     }
     
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-md);
-      margin-top: var(--space-lg);
+    .merch-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
     }
     
-    .gallery-item {
-      position: relative;
+    .merch-item {
+      background-color: var(--white);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition-medium);
-    }
-    
-    .gallery-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
-      opacity: 0;
-      transition: var(--transition-medium);
-    }
-    
-    .gallery-item:hover {
-      transform: scale(1.03);
       box-shadow: var(--shadow-md);
-    }
-    
-    .gallery-item:hover::before {
-      opacity: 1;
-    }
-    
-    .gallery-image {
-      height: 300px;
+      max-width: 400px;
       width: 100%;
-      object-fit: cover;
+    }
+    
+    .merch-image {
+      width: 100%;
+      height: auto;
+    }
+    
+    .merch-info {
+      padding: var(--space-md);
+      text-align: center;
+    }
+    
+    .merch-title {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .merch-price {
+      font-size: 1.2rem;
+      color: var(--orange);
+      font-weight: 700;
+      margin-bottom: var(--space-md);
     }
     
     /* ========== TOUR SECTION ========== */
@@ -536,15 +546,11 @@
       overflow: hidden;
       box-shadow: var(--shadow-md);
       transition: var(--transition-medium);
-    }
-    
-    .tour-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-orange);
+      opacity: 0.7;
     }
     
     .tour-date {
-      background-color: var(--orange);
+      background-color: var(--gray);
       color: var(--text-light);
       padding: var(--space-sm);
       text-align: center;
@@ -874,7 +880,7 @@
   <header class="header" id="header">
     <div class="container nav-container">
       <a href="#" class="logo">
-        <img src="final.png" alt="KENO FISH Logo" class="logo-img">
+        <img src="IMG_5455.png" alt="KENO FISH Logo" class="logo-img">
         <span class="logo-text">KENOFISH</span>
       </a>
       
@@ -886,7 +892,7 @@
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#music" class="nav-link">Music</a></li>
-        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#merch" class="nav-link">Merch</a></li>
         <li><a href="#tour" class="nav-link">Tour</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -900,7 +906,7 @@
       <p class="hero-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
       <div class="hero-btns">
         <a href="#music" class="btn">Listen Now</a>
-        <a href="#tour" class="btn btn-outline">Tour Dates</a>
+        <a href="#merch" class="btn btn-outline">Buy Merch</a>
       </div>
     </div>
   </section>
@@ -940,8 +946,7 @@
             <div class="album-links">
               <a href="#" class="album-link"><i class="fab fa-spotify"></i></a>
               <a href="#" class="album-link"><i class="fab fa-apple"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-bandcamp"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="album-link"><i class="fab fa-soundcloud"></i></a>
             </div>
           </div>
         </div>
@@ -956,8 +961,7 @@
             <div class="album-links">
               <a href="#" class="album-link"><i class="fab fa-spotify"></i></a>
               <a href="#" class="album-link"><i class="fab fa-apple"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-bandcamp"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="album-link"><i class="fab fa-soundcloud"></i></a>
             </div>
           </div>
         </div>
@@ -972,8 +976,7 @@
             <div class="album-links">
               <a href="#" class="album-link"><i class="fab fa-spotify"></i></a>
               <a href="#" class="album-link"><i class="fab fa-apple"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-bandcamp"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="album-link"><i class="fab fa-soundcloud"></i></a>
             </div>
           </div>
         </div>
@@ -981,30 +984,21 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
-  <section class="section gallery bg-cream-dark" id="gallery">
+  <!-- Merch Section -->
+  <section class="section merch bg-cream-dark" id="merch">
     <div class="container">
-      <h2 class="section-title">Gallery</h2>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <h2 class="section-title">Merchandise</h2>
+      <p class="text-center">Get your official KENOFISH t-shirt</p>
       
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KENO FISH performing" class="gallery-image">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Studio session" class="gallery-image">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Live performance" class="gallery-image">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Band portrait" class="gallery-image">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Crowd interaction" class="gallery-image">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Backstage moment" class="gallery-image">
+      <div class="merch-container">
+        <div class="merch-item">
+          <img src="PUT_TEE_PICTURE_URL_HERE" alt="KENOFISH T-Shirt" class="merch-image">
+          <div class="merch-info">
+            <h3 class="merch-title">Official KENOFISH T-Shirt</h3>
+            <p class="merch-price">£8.99</p>
+            <p>High quality cotton t-shirt with the official KENOFISH logo</p>
+            <a href="PUT_PRINTFUL_LINK_HERE" class="btn" target="_blank">Buy Now</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1014,66 +1008,16 @@
   <section class="section tour" id="tour">
     <div class="container">
       <h2 class="section-title">Tour Dates</h2>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <p class="text-center">Stay tuned for upcoming shows</p>
       
       <div class="tour-grid">
-        <!-- Tour Date 1 -->
+        <!-- Coming Soon Date -->
         <div class="tour-card">
-          <div class="tour-date">JUN 15, 2025</div>
+          <div class="tour-date">COMING SOON</div>
           <div class="tour-info">
-            <div class="tour-location">City Name</div>
-            <div class="tour-venue">Venue Name</div>
-            <a href="#" class="btn tour-btn">Get Tickets</a>
-          </div>
-        </div>
-        
-        <!-- Tour Date 2 -->
-        <div class="tour-card">
-          <div class="tour-date">JUN 22, 2025</div>
-          <div class="tour-info">
-            <div class="tour-location">City Name</div>
-            <div class="tour-venue">Venue Name</div>
-            <a href="#" class="btn tour-btn">Get Tickets</a>
-          </div>
-        </div>
-        
-        <!-- Tour Date 3 -->
-        <div class="tour-card">
-          <div class="tour-date">JUL 5, 2025</div>
-          <div class="tour-info">
-            <div class="tour-location">City Name</div>
-            <div class="tour-venue">Venue Name</div>
-            <a href="#" class="btn tour-btn">Get Tickets</a>
-          </div>
-        </div>
-        
-        <!-- Tour Date 4 -->
-        <div class="tour-card">
-          <div class="tour-date">JUL 12, 2025</div>
-          <div class="tour-info">
-            <div class="tour-location">City Name</div>
-            <div class="tour-venue">Venue Name</div>
-            <a href="#" class="btn tour-btn">Get Tickets</a>
-          </div>
-        </div>
-        
-        <!-- Tour Date 5 -->
-        <div class="tour-card">
-          <div class="tour-date">JUL 20, 2025</div>
-          <div class="tour-info">
-            <div class="tour-location">City Name</div>
-            <div class="tour-venue">Venue Name</div>
-            <a href="#" class="btn tour-btn">Get Tickets</a>
-          </div>
-        </div>
-        
-        <!-- Tour Date 6 -->
-        <div class="tour-card">
-          <div class="tour-date">AUG 3, 2025</div>
-          <div class="tour-info">
-            <div class="tour-location">City Name</div>
-            <div class="tour-venue">Venue Name</div>
-            <a href="#" class="btn tour-btn">Get Tickets</a>
+            <div class="tour-location">More Dates Announced Soon</div>
+            <div class="tour-venue">Check back for updates</div>
+            <button class="btn tour-btn btn-disabled">Stay Tuned</button>
           </div>
         </div>
       </div>
@@ -1098,13 +1042,6 @@
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div>
-              <h4>Phone</h4>
-              <p>(123) 456-7890</p>
-            </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">
@@ -1112,7 +1049,7 @@
             </div>
             <div>
               <h4>Location</h4>
-              <p>123 Music Street, City, Country</p>
+              <p>34 West Barnes Level Crossing Street, New Malden, London</p>
             </div>
           </div>
         </div>
@@ -1150,19 +1087,13 @@
           <i class="fab fa-facebook-f"></i>
         </a>
         <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-youtube"></i>
+          <i class="fab fa-tiktok"></i>
         </a>
         <a href="#" class="social-link" target="_blank">
           <i class="fab fa-spotify"></i>
         </a>
         <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-bandcamp"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-tiktok"></i>
+          <i class="fab fa-apple"></i>
         </a>
         <a href="#" class="social-link" target="_blank">
           <i class="fab fa-soundcloud"></i>
@@ -1177,7 +1108,7 @@
       <div class="footer-container">
         <div class="footer-about">
           <div class="footer-logo">
-            <img src="final.png" alt="KENO FISH Logo" class="footer-logo-img">
+            <img src="IMG_5455.png" alt="KENO FISH Logo" class="footer-logo-img">
             <span class="footer-logo-text">KENOFISH</span>
           </div>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
@@ -1189,7 +1120,7 @@
             <li class="footer-link"><a href="#home">Home</a></li>
             <li class="footer-link"><a href="#about">About</a></li>
             <li class="footer-link"><a href="#music">Music</a></li>
-            <li class="footer-link"><a href="#tour">Tour</a></li>
+            <li class="footer-link"><a href="#merch">Merch</a></li>
             <li class="footer-link"><a href="#contact">Contact</a></li>
           </ul>
         </div>
