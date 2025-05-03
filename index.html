@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KENOFISH | Alternative/Indie Rock Band</title>
-  <meta name="description" content="Official website of KENOFISH - Alternative/Indie rock band from London. New single 'Her Heart' coming soon.">
+  <title>KENOFISH | Music</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -302,15 +301,12 @@
       color: var(--text-light);
       text-align: center;
       padding-top: 80px;
-      position: relative;
     }
     
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
       padding: 0 var(--space-md);
-      position: relative;
-      z-index: 2;
     }
     
     .hero-title {
@@ -334,17 +330,6 @@
       justify-content: center;
       gap: var(--space-md);
       animation: fadeIn 1s ease 0.4s both;
-    }
-    
-    .wave-divider {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23F5F5DC" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23F5F5DC" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23F5F5DC"/></svg>') no-repeat center bottom;
-      background-size: cover;
-      z-index: 1;
     }
     
     /* ========== ABOUT SECTION ========== */
@@ -390,33 +375,6 @@
     
     .about-text {
       padding-right: var(--space-md);
-    }
-    
-    .band-members {
-      display: flex;
-      gap: var(--space-md);
-      margin: var(--space-md) 0;
-    }
-    
-    .member {
-      text-align: center;
-    }
-    
-    .member-photo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--orange);
-      margin-bottom: var(--space-xs);
-    }
-    
-    .cta-box {
-      background-color: var(--cream-dark);
-      padding: var(--space-md);
-      border-radius: 8px;
-      margin: var(--space-md) 0;
-      border-left: 4px solid var(--orange);
     }
     
     .about-image {
@@ -475,38 +433,10 @@
       box-shadow: var(--shadow-lg);
     }
     
-    .album-image-container {
-      position: relative;
-    }
-    
     .album-image {
       height: 300px;
       width: 100%;
       object-fit: cover;
-    }
-    
-    .play-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: var(--transition-fast);
-      cursor: pointer;
-    }
-    
-    .album-image-container:hover .play-overlay {
-      opacity: 1;
-    }
-    
-    .play-overlay i {
-      color: white;
-      font-size: 3rem;
     }
     
     .album-info {
@@ -523,18 +453,6 @@
       margin-bottom: var(--space-md);
       color: var(--orange);
       font-weight: 600;
-    }
-    
-    .audio-preview {
-      margin: var(--space-md) 0;
-    }
-    
-    .audio-preview audio {
-      width: 100%;
-    }
-    
-    .pre-save {
-      margin: var(--space-md) 0;
     }
     
     .album-links {
@@ -564,11 +482,11 @@
       background-color: var(--cream);
     }
     
-    .merch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-xl);
-      margin-top: var(--space-lg);
+    .merch-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
     }
     
     .merch-item {
@@ -576,40 +494,13 @@
       border-radius: 8px;
       overflow: hidden;
       box-shadow: var(--shadow-md);
-      position: relative;
-      transition: var(--transition-medium);
-    }
-    
-    .merch-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .merch-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: var(--orange);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      z-index: 1;
-    }
-    
-    .coming-soon .merch-badge {
-      background-color: var(--brown);
+      max-width: 400px;
+      width: 100%;
     }
     
     .merch-image {
       width: 100%;
       height: auto;
-      transition: var(--transition-medium);
-    }
-    
-    .merch-item:hover .merch-image {
-      transform: scale(1.05);
     }
     
     .merch-info {
@@ -655,6 +546,7 @@
       overflow: hidden;
       box-shadow: var(--shadow-md);
       transition: var(--transition-medium);
+      opacity: 0.7;
     }
     
     .tour-date {
@@ -679,106 +571,9 @@
       margin-bottom: var(--space-md);
     }
     
-    .mailing-list {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-md);
-    }
-    
-    .mailing-list input {
-      flex: 1;
-      padding: var(--space-sm);
-      border: none;
-      border-radius: 50px;
-    }
-    
-    /* ========== CONTACT SECTION ========== */
-    .contact {
-      background-color: var(--cream-dark);
-    }
-    
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-xl);
-    }
-    
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-sm);
-    }
-    
-    .contact-icon {
-      color: var(--orange);
-      font-size: 1.5rem;
-      margin-top: 4px;
-    }
-    
-    .contact-social {
-      margin-top: var(--space-lg);
-    }
-    
-    .contact-social h4 {
-      margin-bottom: var(--space-sm);
-    }
-    
-    .contact-social .social-links {
-      display: flex;
-      gap: var(--space-sm);
-    }
-    
-    .contact-social a {
-      color: var(--orange);
-      font-size: 1.5rem;
-    }
-    
-    .contact-form {
-      background-color: var(--white);
-      padding: var(--space-lg);
-      border-radius: 8px;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .form-group {
-      margin-bottom: var(--space-md);
-    }
-    
-    .form-label {
-      display: block;
-      margin-bottom: var(--space-xs);
-      font-weight: 600;
-      color: var(--brown);
-    }
-    
-    .form-input,
-    .form-textarea,
-    .form-select {
+    .tour-btn {
       width: 100%;
-      padding: var(--space-sm);
-      border: 1px solid var(--cream-darker);
-      border-radius: 4px;
-      font-family: var(--font-body);
-      transition: var(--transition-fast);
-    }
-    
-    .form-input:focus,
-    .form-textarea:focus,
-    .form-select:focus {
-      outline: none;
-      border-color: var(--orange);
-      box-shadow: 0 0 0 2px rgba(255,140,66,0.2);
-    }
-    
-    .form-textarea {
-      min-height: 150px;
-      resize: vertical;
+      text-align: center;
     }
     
     /* ========== SOCIAL MEDIA SECTION ========== */
@@ -820,6 +615,35 @@
       box-shadow: var(--shadow-orange);
     }
     
+    /* ========== CONTACT SECTION ========== */
+    .contact {
+      background-color: var(--cream-dark);
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    
+    .contact-icon {
+      color: var(--orange);
+      font-size: 1.5rem;
+      margin-top: 4px;
+    }
+    
     /* ========== FOOTER ========== */
     .footer {
       background-color: var(--brown);
@@ -829,7 +653,7 @@
     
     .footer-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: var(--space-xl);
     }
     
@@ -850,26 +674,13 @@
       font-size: 1.5rem;
       color: var(--text-light);
     }
+
+    #staytuned {
+      color: white;
+    }
     
     .footer-about {
       max-width: 300px;
-    }
-    
-    .footer-newsletter {
-      max-width: 300px;
-    }
-    
-    .newsletter-form {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-sm);
-    }
-    
-    .newsletter-form input {
-      flex: 1;
-      padding: var(--space-sm);
-      border: none;
-      border-radius: 50px;
     }
     
     .footer-title {
@@ -896,52 +707,11 @@
       padding-left: 5px;
     }
     
-    .footer-social {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-sm);
-    }
-    
-    .footer-social a {
-      color: var(--cream);
-      font-size: 1.2rem;
-    }
-    
     .copyright {
       text-align: center;
       margin-top: var(--space-xl);
       padding-top: var(--space-md);
       border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    /* ========== BACK TO TOP BUTTON ========== */
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: var(--orange);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition-medium);
-      z-index: 999;
-      box-shadow: var(--shadow-md);
-    }
-    
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .back-to-top:hover {
-      background-color: var(--orange-dark);
-      transform: translateY(-3px);
     }
     
     /* ========== ANIMATIONS ========== */
@@ -970,16 +740,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .pulse-animation {
-      animation: pulse 2s infinite;
     }
     
     /* ========== MEDIA QUERIES ========== */
@@ -1058,14 +818,6 @@
         height: 50px;
         font-size: 1.3rem;
       }
-      
-      .band-members {
-        flex-direction: column;
-      }
-      
-      .mailing-list {
-        flex-direction: column;
-      }
     }
     
     @media (max-width: 576px) {
@@ -1091,8 +843,8 @@
   <!-- Header -->
   <header class="header" id="header">
     <div class="container nav-container">
-      <a href="#home" class="logo">
-        <img src="final.png" alt="KENOFISH Logo" class="logo-img">
+      <a href="#" class="logo">
+        <img src="final.png" alt="KENO FISH Logo" class="logo-img">
         <span class="logo-text">KENOFISH</span>
       </a>
       
@@ -1114,13 +866,12 @@
   <!-- Hero Section -->
   <section class="hero bg-brown" id="home">
     <div class="hero-content">
-      <h1 class="hero-title">KENOFISH</h1>
+      <h1 class="hero-title">Kenofish</h1>
       <p class="hero-subtitle">Her Heart<br>Coming soon to streaming platforms...</p>
       <div class="hero-btns">
-        <a href="#music" class="btn pulse-animation">Listen Now</a>
+        <a href="#music" class="btn">Listen Now</a>
       </div>
     </div>
-    <div class="wave-divider"></div>
   </section>
 
   <!-- About Section -->
@@ -1129,31 +880,9 @@
       <h2 class="section-title">About The Band</h2>
       <div class="about-content">
         <div class="about-text">
-          <p>KENOFISH are currently a two-piece alternative/indie rock band from just outside of London, consisting of founding members Matthew Sandfort (Guitar, Vocals) and James Ball (Drums).</p>
-          
-          <div class="band-members">
-            <div class="member">
-              <img src="https://via.placeholder.com/150/3D2B1F/FFFFFF?text=Matthew" alt="Matthew Sandfort" class="member-photo">
-              <h4>Matthew Sandfort</h4>
-              <p>Guitar & Vocals</p>
-            </div>
-            <div class="member">
-              <img src="https://via.placeholder.com/150/3D2B1F/FFFFFF?text=James" alt="James Ball" class="member-photo">
-              <h4>James Ball</h4>
-              <p>Drums</p>
-            </div>
-          </div>
-          
-          <p>Taking inspiration from all kinds of music genres, KENOFISH are rooted within that 90s rock feel, with a current vibe.</p>
-          
-          <div class="cta-box">
-            <p>We're looking for two new members to complete our sound!</p>
-            <ul>
-              <li>Bass player</li>
-              <li>Guitarist</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline">Get in touch</a>
-          </div>
+          <p>Kenofish are currently a two-piece alternative/indie rock band from just outside of London, consisting of founding members Matthew Sandfort (Guitar, Vocals) and James Ball (Drums).</p>
+          <p>Taking inspiration from all kinds of music genres, Kenofish are rooted within that 90s rock feel, with a current vibe.</p>
+          <p>As it stands, the band is looking for two new members to join. A bass player and a guitarist to complete the full sound. If interested please contact us via our email or social media. Thank you.</p>
         </div>
         <div class="about-image">
           <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KENOFISH performing live">
@@ -1168,29 +897,16 @@
       <h2 class="section-title">Our Music</h2>
       
       <div class="music-grid">
+        <!-- Album -->
         <div class="album-card">
-          <div class="album-image-container">
-            <img src="https://via.placeholder.com/600x600/3D2B1F/FFFFFF?text=Her+Heart" alt="Her Heart Cover" class="album-image">
-            <div class="play-overlay">
-              <i class="fas fa-play"></i>
-            </div>
-          </div>
+          <img src="https://via.placeholder.com/600x600/3D2B1F/FFFFFF?text=Her+Heart" alt="Her Heart Cover" class="album-image">
           <div class="album-info">
             <h3 class="album-title">Her Heart</h3>
-            <span class="album-year">Coming 2025</span>
-            <div class="audio-preview">
-              <audio controls>
-                <source src="preview.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-            <div class="pre-save">
-              <a href="#" class="btn">Pre-save on Spotify</a>
-            </div>
+            <span class="album-year">2025</span>
+            <p>Coming soon to all major streaming platforms</p>
             <div class="album-links">
               <a href="#" class="album-link"><i class="fab fa-spotify"></i></a>
               <a href="#" class="album-link"><i class="fab fa-apple"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>
@@ -1203,24 +919,14 @@
     <div class="container">
       <h2 class="section-title">Merchandise</h2>
       
-      <div class="merch-grid">
+      <div class="merch-container">
         <div class="merch-item">
-          <div class="merch-badge">SOLD OUT</div>
-          <img src="https://i.imgur.com/qc65jUa.jpeg" alt="KENOFISH T-Shirt" class="merch-image">
+          <img src="https://via.placeholder.com/800x800/F5F5DC/3D2B1F?text=KENOFISH+T-Shirt" alt="KENOFISH T-Shirt" class="merch-image">
           <div class="merch-info">
             <h3 class="merch-title">Official KENOFISH T-Shirt</h3>
             <p class="merch-price">£9.99</p>
-            <button class="btn btn-disabled">Notify When Available</button>
-          </div>
-        </div>
-        
-        <div class="merch-item coming-soon">
-          <div class="merch-badge">COMING SOON</div>
-          <img src="https://via.placeholder.com/800x800/F5F5DC/3D2B1F?text=KENOFISH+Vinyl" alt="KENOFISH Vinyl" class="merch-image">
-          <div class="merch-info">
-            <h3 class="merch-title">Limited Edition Vinyl</h3>
-            <p class="merch-price">£24.99</p>
-            <button class="btn btn-disabled">Coming Soon</button>
+            <p>High quality cotton t-shirt with the official KENOFISH logo</p>
+            <button class="btn btn-disabled">SOLD OUT</button>
           </div>
         </div>
       </div>
@@ -1234,15 +940,13 @@
       <p class="text-center" id="staytuned">Stay tuned for upcoming shows</p>
       
       <div class="tour-grid">
+        <!-- Coming Soon Date -->
         <div class="tour-card">
           <div class="tour-date">COMING SOON</div>
           <div class="tour-info">
             <div class="tour-location">More Dates Announced Soon</div>
-            <div class="tour-venue">Sign up to be the first to know</div>
-            <form class="mailing-list">
-              <input type="email" placeholder="Your email address" required>
-              <button type="submit" class="btn">Notify Me</button>
-            </form>
+            <div class="tour-venue">Check back for updates</div>
+            <button class="btn tour-btn btn-disabled">Stay Tuned</button>
           </div>
         </div>
       </div>
@@ -1256,58 +960,16 @@
       
       <div class="contact-container">
         <div class="contact-info">
-          <h3>Contact & Booking</h3>
+          <h3>Contact Information</h3>
           <div class="contact-item">
             <div class="contact-icon">
               <i class="fas fa-envelope"></i>
             </div>
             <div>
               <h4>Email</h4>
-              <p>bookings@kenofish.com</p>
+              <p>info@kenofish.com</p>
             </div>
           </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div>
-              <h4>Join the Band</h4>
-              <p>auditions@kenofish.com</p>
-            </div>
-          </div>
-          <div class="contact-social">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-              <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="contact-form">
-          <h3>Send Us a Message</h3>
-          <form id="contactForm">
-            <div class="form-group">
-              <input type="text" class="form-input" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-input" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-              <select class="form-input" required>
-                <option value="">What's this about?</option>
-                <option value="booking">Booking</option>
-                <option value="audition">Audition</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <textarea class="form-textarea" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn">Send Message</button>
-          </form>
         </div>
       </div>
     </div>
@@ -1331,7 +993,7 @@
           <i class="fab fa-spotify"></i>
         </a>
         <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-youtube"></i>
+          <i class="fab fa-apple"></i>
         </a>
       </div>
     </div>
@@ -1343,25 +1005,30 @@
       <div class="footer-container">
         <div class="footer-about">
           <div class="footer-logo">
-            <img src="final.png" alt="KENOFISH Logo" class="footer-logo-img">
+            <img src="final.png" alt="KENO FISH Logo" class="footer-logo-img">
             <span class="footer-logo-text">KENOFISH</span>
           </div>
           <p>Alternative/Indie Rock Band from London</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-          </div>
         </div>
         
-        <div class="footer-newsletter">
-          <h3 class="footer-title">Join Our Mailing List</h3>
-          <p>Get updates on new music, merch, and shows</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" required>
-            <button type="submit" class="btn">Subscribe</button>
-          </form>
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#home">Home</a></li>
+            <li class="footer-link"><a href="#about">About</a></li>
+            <li class="footer-link"><a href="#music">Music</a></li>
+            <li class="footer-link"><a href="#merch">Merch</a></li>
+            <li class="footer-link"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="footer-title">Legal</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">Privacy Policy</a></li>
+            <li class="footer-link"><a href="#">Terms of Service</a></li>
+            <li class="footer-link"><a href="#">Cookie Policy</a></li>
+          </ul>
         </div>
       </div>
       
@@ -1370,11 +1037,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Back to Top Button -->
-  <a href="#home" class="back-to-top" id="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </a>
 
   <script>
     // Mobile menu toggle
@@ -1404,60 +1066,6 @@
       } else {
         header.classList.remove('scrolled');
       }
-      
-      // Back to top button visibility
-      const backToTopButton = document.getElementById('back-to-top');
-      if (window.scrollY > 300) {
-        backToTopButton.classList.add('visible');
-      } else {
-        backToTopButton.classList.remove('visible');
-      }
-    });
-    
-    // Audio player functionality
-    document.querySelectorAll('.play-overlay').forEach(overlay => {
-      overlay.addEventListener('click', (e) => {
-        e.preventDefault();
-        const audio = overlay.closest('.album-card').querySelector('audio');
-        const icon = overlay.querySelector('i');
-        if (audio.paused) {
-          audio.play();
-          icon.classList.remove('fa-play');
-          icon.classList.add('fa-pause');
-        } else {
-          audio.pause();
-          icon.classList.remove('fa-pause');
-          icon.classList.add('fa-play');
-        }
-      });
-    });
-    
-    // Form submission handlers
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Here you would typically send the form data to your server
-        alert('Thank you for your message! We\'ll get back to you soon.');
-        form.reset();
-      });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
     });
   </script>
 </body>
