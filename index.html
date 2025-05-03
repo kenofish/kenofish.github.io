@@ -147,6 +147,13 @@
       text-decoration: none;
     }
 
+    .nav__logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: var(--secondary);
+    }
+
     .nav__logo-img {
       height: 5rem;
       transition: transform 0.4s var(--ease);
@@ -403,9 +410,24 @@
       text-align: center;
     }
 
-    .footer__logo {
-      height: 8rem;
+    .footer__logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
       margin-bottom: 3rem;
+    }
+
+    .footer__logo-img {
+      height: 8rem;
+      opacity: 0.8;
+    }
+
+    .footer__logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 3rem;
+      color: var(--light);
       opacity: 0.8;
     }
 
@@ -494,6 +516,11 @@
         left: 0;
       }
 
+      .nav__logo-text {
+        display: block;
+        font-size: 2rem;
+      }
+
       .hero__title {
         font-size: 6rem;
       }
@@ -515,6 +542,29 @@
         flex-direction: column;
         align-items: center;
       }
+
+      .footer__logo-container {
+        flex-direction: column;
+      }
+
+      .footer__logo-text {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title {
+        font-size: 4.8rem;
+      }
+
+      .section {
+        padding: 8rem 0;
+      }
+
+      .member__image {
+        width: 150px;
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -524,9 +574,10 @@
     <div class="container nav__content">
       <a href="#" class="nav__logo">
         <img src="final.png" alt="KENOFISH Logo" class="nav__logo-img">
+        <span class="nav__logo-text">KENOFISH</span>
       </a>
       
-      <button class="nav__toggle" id="navToggle">
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
       
@@ -632,7 +683,10 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <img src="final-white.png" alt="KENOFISH" class="footer__logo">
+      <div class="footer__logo-container">
+        <img src="final-white.png" alt="KENOFISH" class="footer__logo-img">
+        <span class="footer__logo-text">KENOFISH</span>
+      </div>
       <div class="footer__social">
         <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" class="footer__social-link" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
@@ -650,12 +704,14 @@
 
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('nav__links--active');
+      navToggle.setAttribute('aria-expanded', navLinks.classList.contains('nav__links--active'));
     });
 
     // Close mobile menu when clicking a link
     document.querySelectorAll('.nav__link').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('nav__links--active');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
     });
 
