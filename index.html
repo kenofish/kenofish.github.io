@@ -1,1162 +1,420 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KENOFISH | Alternative/Indie Rock Band</title>
-  <meta name="description" content="Official website of KENOFISH - Alternative/Indie rock band from London. New single 'Her Heart' coming soon.">
+  <title>KENOFISH | Alternative Rock Revolution</title>
+  <meta name="description" content="Official website of KENOFISH - London's premier alternative rock experience. New single 'Her Heart' coming 2025.">
+  <meta property="og:image" content="https://i.imgur.com/qc65jUa.jpeg">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" as="style">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;600;700&display=swap">
   <style>
-    /* ========== ROOT VARIABLES ========== */
+    /* ========== CUSTOM PROPERTIES ========== */
     :root {
-      /* Color Palette */
-      --cream: #F5F5DC;
-      --cream-dark: #E8E8D0;
-      --cream-darker: #DCDCC5;
-      --orange: #FF8C42;
-      --orange-dark: #E67337;
-      --orange-darker: #CC5A2C;
-      --brown: #3D2B1F;
-      --brown-light: #4A3A30;
-      --white: #FFFFFF;
-      --black: #000000;
-      --text-light: #FFF8F0;
-      --text-dark: #2A2A2A;
-      --gray: #888888;
-      --gray-light: #CCCCCC;
-      
-      /* Typography */
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Raleway', sans-serif;
-      
-      /* Spacing */
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 2rem;
-      --space-lg: 3rem;
-      --space-xl: 4rem;
-      --space-xxl: 6rem;
-      
-      /* Shadows */
-      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 8px rgba(0,0,0,0.15);
-      --shadow-lg: 0 8px 16px rgba(0,0,0,0.2);
-      --shadow-orange: 0 4px 12px rgba(255,140,66,0.3);
-      
-      /* Transitions */
-      --transition-fast: 0.2s ease;
-      --transition-medium: 0.4s ease;
-      --transition-slow: 0.6s ease;
+      --primary: #FF6B35;
+      --primary-dark: #E15620;
+      --secondary: #3D2B1F;
+      --accent: #00A8E8;
+      --light: #F8F9FA;
+      --dark: #212529;
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     }
-    
+
     /* ========== BASE STYLES ========== */
-    * {
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
-    
+
     html {
       scroll-behavior: smooth;
-      font-size: 16px;
-    }
-    
-    body {
-      font-family: var(--font-body);
-      background-color: var(--cream);
-      color: var(--text-dark);
-      line-height: 1.7;
+      font-size: 62.5%;
       overflow-x: hidden;
     }
-    
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.7;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
     h1, h2, h3, h4, h5, h6 {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: var(--space-md);
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 2rem;
     }
-    
-    p {
-      margin-bottom: var(--space-md);
-    }
-    
-    a {
-      color: var(--orange);
-      text-decoration: none;
-      transition: var(--transition-fast);
-    }
-    
-    a:hover {
-      color: var(--orange-dark);
-    }
-    
+
     img {
       max-width: 100%;
       height: auto;
       display: block;
     }
-    
+
     /* ========== UTILITY CLASSES ========== */
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 0 var(--space-md);
+      padding: 0 2rem;
     }
-    
+
     .section {
-      padding: var(--space-xxl) 0;
+      padding: 12rem 0;
       position: relative;
     }
-    
-    .section-title {
-      font-size: 2.5rem;
-      text-align: center;
-      color: var(--brown);
-      position: relative;
-      padding-bottom: var(--space-sm);
-      margin-bottom: var(--space-lg);
+
+    .text-gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background-color: var(--orange);
-      border-radius: 2px;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: var(--space-sm) var(--space-lg);
-      background-color: var(--orange);
-      color: var(--text-light);
-      border: none;
-      border-radius: 50px;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: var(--transition-medium);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .btn:hover {
-      background-color: var(--orange-dark);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .btn-outline {
-      background-color: transparent;
-      border: 2px solid var(--orange);
-      color: var(--orange);
-    }
-    
-    .btn-outline:hover {
-      background-color: var(--orange);
-      color: var(--text-light);
-    }
-    
-    .btn-disabled {
-      background-color: var(--gray-light);
-      color: var(--gray);
-      cursor: not-allowed;
-    }
-    
-    .btn-disabled:hover {
-      transform: none;
-      background-color: var(--gray-light);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .text-center {
-      text-align: center;
-    }
-    
-    .text-orange {
-      color: var(--orange);
-    }
-    
-    .text-brown {
-      color: var(--brown);
-    }
-    
-    .bg-cream {
-      background-color: var(--cream);
-    }
-    
-    .bg-cream-dark {
-      background-color: var(--cream-dark);
-    }
-    
-    .bg-orange {
-      background-color: var(--orange);
-      color: var(--text-light);
-    }
-    
-    .bg-brown {
-      background-color: var(--brown);
-      color: var(--text-light);
-    }
-    
-    /* ========== HEADER & NAVIGATION ========== */
-    .header {
+
+    /* ========== COMPONENTS ========== */
+    /* Navigation */
+    .nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: var(--space-sm) 0;
-      background-color: var(--cream);
+      padding: 2rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       z-index: 1000;
-      transition: var(--transition-medium);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.4s var(--ease);
     }
-    
-    .header.scrolled {
-      background-color: rgba(245, 245, 220, 0.95);
-      padding: var(--space-xs) 0;
-      box-shadow: var(--shadow-md);
+
+    .nav--scrolled {
+      padding: 1rem 0;
+      box-shadow: var(--shadow-xl);
     }
-    
-    .nav-container {
+
+    .nav__content {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    
-    .logo {
+
+    .nav__logo {
       display: flex;
       align-items: center;
-      gap: var(--space-sm);
+      gap: 1rem;
+      text-decoration: none;
     }
-    
-    .logo-img {
-      height: 50px;
-      width: auto;
-      filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.2));
+
+    .nav__logo-img {
+      height: 5rem;
+      transition: transform 0.4s var(--ease);
     }
-    
-    .logo-text {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--brown);
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+
+    .nav__logo:hover .nav__logo-img {
+      transform: rotate(15deg);
     }
-    
-    .nav-links {
+
+    .nav__links {
       display: flex;
+      gap: 4rem;
       list-style: none;
-      gap: var(--space-lg);
     }
-    
-    .nav-link {
+
+    .nav__link {
       position: relative;
+      font-size: 1.8rem;
       font-weight: 600;
-      color: var(--brown);
-      padding: var(--space-xs) 0;
+      color: var(--secondary);
+      text-decoration: none;
+      padding: 1rem 0;
+      overflow: hidden;
     }
-    
-    .nav-link::after {
+
+    .nav__link::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--orange);
-      transition: var(--transition-fast);
-    }
-    
-    .nav-link:hover::after {
       width: 100%;
+      height: 2px;
+      background: var(--gradient);
+      transform: translateX(-100%);
+      transition: transform 0.4s var(--ease);
     }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--brown);
-      font-size: 1.5rem;
-      cursor: pointer;
+
+    .nav__link:hover::after {
+      transform: translateX(0);
     }
-    
-    /* ========== HERO SECTION ========== */
+
+    /* Hero Section */
     .hero {
       height: 100vh;
       min-height: 800px;
       display: flex;
       align-items: center;
-      background: linear-gradient(rgba(61, 43, 31, 0.7), rgba(61, 43, 31, 0.7)), 
-                  url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      color: var(--text-light);
-      text-align: center;
-      padding-top: 80px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4') center/cover;
+      color: var(--light);
       position: relative;
+      overflow: hidden;
     }
-    
-    .hero-content {
+
+    .hero__video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 var(--space-md);
-      position: relative;
-      z-index: 2;
-    }
-    
-    .hero-title {
-      font-size: 4rem;
-      font-weight: 900;
-      margin-bottom: var(--space-md);
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      animation: fadeInDown 1s ease;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.5rem;
-      font-weight: 300;
-      margin-bottom: var(--space-lg);
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-      animation: fadeInUp 1s ease 0.2s both;
-    }
-    
-    .hero-btns {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-md);
-      animation: fadeIn 1s ease 0.4s both;
-    }
-    
-    .wave-divider {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23F5F5DC" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23F5F5DC" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23F5F5DC"/></svg>') no-repeat center bottom;
-      background-size: cover;
-      z-index: 1;
-    }
-    
-    /* ========== ABOUT SECTION ========== */
-    .about {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .about::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: -100px;
-      width: 300px;
-      height: 300px;
-      background-color: var(--orange);
-      opacity: 0.1;
-      border-radius: 50%;
-      z-index: 0;
-    }
-    
-    .about::after {
-      content: '';
-      position: absolute;
-      bottom: -150px;
-      right: -150px;
-      width: 400px;
-      height: 400px;
-      background-color: var(--orange);
-      opacity: 0.1;
-      border-radius: 50%;
-      z-index: 0;
-    }
-    
-    .about-content {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-xl);
-      align-items: center;
-    }
-    
-    .about-text {
-      padding-right: var(--space-md);
-    }
-    
-    .band-members {
-      display: flex;
-      gap: var(--space-md);
-      margin: var(--space-md) 0;
-    }
-    
-    .member {
       text-align: center;
     }
-    
-    .member-photo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--orange);
-      margin-bottom: var(--space-xs);
-    }
-    
-    .cta-box {
-      background-color: var(--cream-dark);
-      padding: var(--space-md);
-      border-radius: 8px;
-      margin: var(--space-md) 0;
-      border-left: 4px solid var(--orange);
-    }
-    
-    .about-image {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      transform: rotate(-2deg);
-      transition: var(--transition-medium);
-    }
-    
-    .about-image:hover {
-      transform: rotate(0deg);
-    }
-    
-    .about-image::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100%;
-      height: 100%;
-      border: 2px solid var(--orange);
-      border-radius: 8px;
-      z-index: -1;
-      transition: var(--transition-medium);
-    }
-    
-    .about-image:hover::before {
-      top: 15px;
-      left: 15px;
-    }
-    
-    /* ========== MUSIC SECTION ========== */
-    .music {
-      background-color: var(--cream-dark);
-    }
-    
-    .music-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-xl);
-      margin-top: var(--space-lg);
-    }
-    
-    .album-card {
-      background-color: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition-medium);
-    }
-    
-    .album-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .album-image-container {
-      position: relative;
-    }
-    
-    .album-image {
-      height: 300px;
-      width: 100%;
-      object-fit: cover;
-    }
-    
-    .play-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    .hero__title {
+      font-size: 8rem;
+      margin-bottom: 2rem;
+      animation: textReveal 1.5s var(--ease) forwards;
       opacity: 0;
-      transition: var(--transition-fast);
-      cursor: pointer;
     }
-    
-    .album-image-container:hover .play-overlay {
-      opacity: 1;
+
+    .hero__subtitle {
+      font-size: 2.4rem;
+      margin-bottom: 4rem;
+      animation: fadeInUp 1s var(--ease) 0.3s forwards;
+      opacity: 0;
     }
-    
-    .play-overlay i {
-      color: white;
-      font-size: 3rem;
-    }
-    
-    .album-info {
-      padding: var(--space-md);
-    }
-    
-    .album-title {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .album-year {
-      display: inline-block;
-      margin-bottom: var(--space-md);
-      color: var(--orange);
-      font-weight: 600;
-    }
-    
-    .audio-preview {
-      margin: var(--space-md) 0;
-    }
-    
-    .audio-preview audio {
-      width: 100%;
-    }
-    
-    .pre-save {
-      margin: var(--space-md) 0;
-    }
-    
-    .album-links {
-      display: flex;
-      gap: var(--space-sm);
-    }
-    
-    .album-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: var(--orange);
-      color: var(--text-light);
-      border-radius: 50%;
-      transition: var(--transition-fast);
-    }
-    
-    .album-link:hover {
-      background-color: var(--orange-dark);
-      transform: translateY(-3px);
-    }
-    
-    /* ========== MERCH SECTION ========== */
-    .merch {
-      background-color: var(--cream);
-    }
-    
-    .merch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-xl);
-      margin-top: var(--space-lg);
-    }
-    
-    .merch-item {
-      background-color: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
+
+    /* About Section */
+    .about {
+      background: var(--light);
       position: relative;
-      transition: var(--transition-medium);
     }
-    
-    .merch-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .merch-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: var(--orange);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      z-index: 1;
-    }
-    
-    .coming-soon .merch-badge {
-      background-color: var(--brown);
-    }
-    
-    .merch-image {
-      width: 100%;
-      height: auto;
-      transition: var(--transition-medium);
-    }
-    
-    .merch-item:hover .merch-image {
-      transform: scale(1.05);
-    }
-    
-    .merch-info {
-      padding: var(--space-md);
-      text-align: center;
-    }
-    
-    .merch-title {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .merch-price {
-      font-size: 1.2rem;
-      color: var(--orange);
-      font-weight: 700;
-      margin-bottom: var(--space-md);
-    }
-    
-    /* ========== TOUR SECTION ========== */
-    .tour {
-      background-color: var(--brown);
-    }
-    
-    .tour .section-title {
-      color: var(--text-light);
-    }
-    
-    .tour .section-title::after {
-      background-color: var(--orange);
-    }
-    
-    .tour-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-md);
-      margin-top: var(--space-lg);
-    }
-    
-    .tour-card {
-      background-color: var(--cream);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition-medium);
-    }
-    
-    .tour-date {
-      background-color: var(--gray);
-      color: var(--text-light);
-      padding: var(--space-sm);
-      text-align: center;
-      font-weight: 700;
-    }
-    
-    .tour-info {
-      padding: var(--space-md);
-    }
-    
-    .tour-location {
-      font-weight: 700;
-      margin-bottom: var(--space-xs);
-    }
-    
-    .tour-venue {
-      color: var(--brown-light);
-      margin-bottom: var(--space-md);
-    }
-    
-    .mailing-list {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-md);
-    }
-    
-    .mailing-list input {
-      flex: 1;
-      padding: var(--space-sm);
-      border: none;
-      border-radius: 50px;
-    }
-    
-    /* ========== CONTACT SECTION ========== */
-    .contact {
-      background-color: var(--cream-dark);
-    }
-    
-    .contact-container {
+
+    .about__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-xl);
-    }
-    
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-sm);
-    }
-    
-    .contact-icon {
-      color: var(--orange);
-      font-size: 1.5rem;
-      margin-top: 4px;
-    }
-    
-    .contact-social {
-      margin-top: var(--space-lg);
-    }
-    
-    .contact-social h4 {
-      margin-bottom: var(--space-sm);
-    }
-    
-    .contact-social .social-links {
-      display: flex;
-      gap: var(--space-sm);
-    }
-    
-    .contact-social a {
-      color: var(--orange);
-      font-size: 1.5rem;
-    }
-    
-    .contact-form {
-      background-color: var(--white);
-      padding: var(--space-lg);
-      border-radius: 8px;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .form-group {
-      margin-bottom: var(--space-md);
-    }
-    
-    .form-label {
-      display: block;
-      margin-bottom: var(--space-xs);
-      font-weight: 600;
-      color: var(--brown);
-    }
-    
-    .form-input,
-    .form-textarea,
-    .form-select {
-      width: 100%;
-      padding: var(--space-sm);
-      border: 1px solid var(--cream-darker);
-      border-radius: 4px;
-      font-family: var(--font-body);
-      transition: var(--transition-fast);
-    }
-    
-    .form-input:focus,
-    .form-textarea:focus,
-    .form-select:focus {
-      outline: none;
-      border-color: var(--orange);
-      box-shadow: 0 0 0 2px rgba(255,140,66,0.2);
-    }
-    
-    .form-textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-    
-    /* ========== SOCIAL MEDIA SECTION ========== */
-    .social-section {
-      background-color: var(--brown);
-      padding: var(--space-xl) 0;
-      text-align: center;
-    }
-    
-    .social-title {
-      color: var(--text-light);
-      font-size: 2rem;
-      margin-bottom: var(--space-lg);
-    }
-    
-    .social-links-container {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-md);
-      flex-wrap: wrap;
-    }
-    
-    .social-link {
-      display: inline-flex;
+      gap: 8rem;
       align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background-color: var(--orange);
-      color: var(--text-light);
-      border-radius: 50%;
-      font-size: 1.5rem;
-      transition: var(--transition-medium);
     }
-    
-    .social-link:hover {
-      background-color: var(--orange-dark);
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: var(--shadow-orange);
+
+    .about__image {
+      border-radius: 1rem;
+      overflow: hidden;
+      transform: rotate(-2deg);
+      transition: transform 0.4s var(--ease);
+      box-shadow: var(--shadow-xl);
     }
-    
-    /* ========== FOOTER ========== */
-    .footer {
-      background-color: var(--brown);
-      color: var(--text-light);
-      padding: var(--space-xl) 0;
+
+    .about__image:hover {
+      transform: rotate(0);
     }
-    
-    .footer-container {
+
+    .members {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-xl);
+      gap: 4rem;
+      margin: 4rem 0;
     }
-    
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-md);
-    }
-    
-    .footer-logo-img {
-      height: 40px;
-      width: auto;
-    }
-    
-    .footer-logo-text {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      color: var(--text-light);
-    }
-    
-    .footer-about {
-      max-width: 300px;
-    }
-    
-    .footer-newsletter {
-      max-width: 300px;
-    }
-    
-    .newsletter-form {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-sm);
-    }
-    
-    .newsletter-form input {
-      flex: 1;
-      padding: var(--space-sm);
-      border: none;
-      border-radius: 50px;
-    }
-    
-    .footer-title {
-      font-size: 1.2rem;
-      margin-bottom: var(--space-md);
-      color: var(--orange);
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-link {
-      margin-bottom: var(--space-xs);
-    }
-    
-    .footer-link a {
-      color: var(--cream);
-      transition: var(--transition-fast);
-    }
-    
-    .footer-link a:hover {
-      color: var(--orange);
-      padding-left: 5px;
-    }
-    
-    .footer-social {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-sm);
-    }
-    
-    .footer-social a {
-      color: var(--cream);
-      font-size: 1.2rem;
-    }
-    
-    .copyright {
+
+    .member {
       text-align: center;
-      margin-top: var(--space-xl);
-      padding-top: var(--space-md);
-      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-xl);
     }
-    
-    /* ========== BACK TO TOP BUTTON ========== */
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: var(--orange);
-      color: white;
+
+    .member__image {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition-medium);
-      z-index: 999;
-      box-shadow: var(--shadow-md);
+      margin: 0 auto 2rem;
+      object-fit: cover;
+      border: 4px solid var(--primary);
     }
-    
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
+
+    /* Music Section */
+    .music {
+      background: var(--secondary);
+      color: var(--light);
+      position: relative;
     }
-    
-    .back-to-top:hover {
-      background-color: var(--orange-dark);
-      transform: translateY(-3px);
+
+    .release {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
     }
-    
+
+    .release__artwork {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 4rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Merch Section */
+    .merch {
+      background: var(--light);
+    }
+
+    .merch__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+      margin-top: 4rem;
+    }
+
+    .product {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      transition: transform 0.4s var(--ease);
+    }
+
+    .product:hover {
+      transform: translateY(-1rem);
+    }
+
+    .product__badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .product__image {
+      height: 400px;
+      object-fit: cover;
+    }
+
     /* ========== ANIMATIONS ========== */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes fadeInDown {
+    @keyframes textReveal {
       from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(2rem);
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(2rem);
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .pulse-animation {
-      animation: pulse 2s infinite;
-    }
-    
+
     /* ========== MEDIA QUERIES ========== */
-    @media (max-width: 992px) {
-      .section {
-        padding: var(--space-xl) 0;
-      }
-      
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-      }
-      
-      .about-text {
-        padding-right: 0;
-      }
-      
-      .about-image {
-        max-width: 500px;
-        margin: 0 auto;
-      }
-      
-      .contact-container {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-      }
-    }
-    
     @media (max-width: 768px) {
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .hero-title {
-        font-size: 3rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.2rem;
-      }
-      
-      .nav-links {
+      .nav__links {
         position: fixed;
-        top: 80px;
+        top: 8rem;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 80px);
-        background-color: var(--cream);
+        height: calc(100vh - 8rem);
+        background: white;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: var(--space-xl);
-        transition: var(--transition-medium);
+        padding: 4rem;
+        transition: left 0.4s var(--ease);
       }
-      
-      .nav-links.active {
+
+      .nav__links--active {
         left: 0;
       }
-      
-      .mobile-menu-btn {
-        display: block;
+
+      .hero__title {
+        font-size: 6rem;
       }
-      
-      .hero-btns {
-        flex-direction: column;
-        gap: var(--space-sm);
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .social-link {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-      }
-      
-      .band-members {
-        flex-direction: column;
-      }
-      
-      .mailing-list {
-        flex-direction: column;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .section {
-        padding: var(--space-lg) 0;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .logo-text {
-        font-size: 1.5rem;
+
+      .about__grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="container nav-container">
-      <a href="#home" class="logo">
-        <img src="final.png" alt="KENOFISH Logo" class="logo-img">
-        <span class="logo-text">KENOFISH</span>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container nav__content">
+      <a href="#" class="nav__logo">
+        <img src="final.png" alt="KENOFISH" class="nav__logo-img">
       </a>
       
-      <button class="mobile-menu-btn" id="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#music" class="nav-link">Music</a></li>
-        <li><a href="#merch" class="nav-link">Merch</a></li>
-        <li><a href="#tour" class="nav-link">Tour</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#home" class="nav__link">Home</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#music" class="nav__link">Music</a></li>
+        <li><a href="#merch" class="nav__link">Merch</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
       </ul>
     </div>
-  </header>
+  </nav>
 
   <!-- Hero Section -->
-  <section class="hero bg-brown" id="home">
-    <div class="hero-content">
-      <h1 class="hero-title">KENOFISH</h1>
-      <p class="hero-subtitle">Her Heart<br>Coming soon to streaming platforms...</p>
-      <div class="hero-btns">
-        <a href="#music" class="btn pulse-animation">Listen Now</a>
+  <section class="hero" id="home">
+    <video autoplay muted loop class="hero__video">
+      <source src="band-performance.mp4" type="video/mp4">
+    </video>
+    <div class="container hero__content">
+      <h1 class="hero__title text-gradient">KENOFISH</h1>
+      <p class="hero__subtitle">Her Heart - Coming 2025</p>
+      <div class="hero__cta">
+        <a href="#music" class="btn">Pre-Save Now</a>
       </div>
     </div>
-    <div class="wave-divider"></div>
   </section>
 
   <!-- About Section -->
-  <section class="section about bg-cream" id="about">
+  <section class="section about" id="about">
     <div class="container">
-      <h2 class="section-title">About The Band</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>KENOFISH are currently a two-piece alternative/indie rock band from just outside of London, consisting of founding members Matthew Sandfort (Guitar, Vocals) and James Ball (Drums).</p>
-          
-          <div class="band-members">
+      <div class="about__grid">
+        <div class="about__content">
+          <h2 class="section__title">Redefining Rock</h2>
+          <div class="members">
             <div class="member">
-              <img src="https://via.placeholder.com/150/3D2B1F/FFFFFF?text=Matthew" alt="Matthew Sandfort" class="member-photo">
-              <h4>Matthew Sandfort</h4>
-              <p>Guitar & Vocals</p>
+              <img src="matthew.jpg" alt="Matthew" class="member__image">
+              <h3>Matthew Sandfort</h3>
+              <p>Vocals & Guitar</p>
             </div>
             <div class="member">
-              <img src="https://via.placeholder.com/150/3D2B1F/FFFFFF?text=James" alt="James Ball" class="member-photo">
-              <h4>James Ball</h4>
+              <img src="james.jpg" alt="James" class="member__image">
+              <h3>James Ball</h3>
               <p>Drums</p>
             </div>
           </div>
-          
-          <p>Taking inspiration from all kinds of music genres, KENOFISH are rooted within that 90s rock feel, with a current vibe.</p>
-          
-          <div class="cta-box">
-            <p>We're looking for two new members to complete our sound!</p>
-            <ul>
-              <li>Bass player</li>
-              <li>Guitarist</li>
-            </ul>
-            <a href="#contact" class="btn btn-outline">Get in touch</a>
-          </div>
         </div>
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KENOFISH performing live">
+        <div class="about__image">
+          <img src="band-photo.jpg" alt="KENOFISH">
         </div>
       </div>
     </div>
@@ -1165,299 +423,58 @@
   <!-- Music Section -->
   <section class="section music" id="music">
     <div class="container">
-      <h2 class="section-title">Our Music</h2>
-      
-      <div class="music-grid">
-        <div class="album-card">
-          <div class="album-image-container">
-            <img src="https://via.placeholder.com/600x600/3D2B1F/FFFFFF?text=Her+Heart" alt="Her Heart Cover" class="album-image">
-            <div class="play-overlay">
-              <i class="fas fa-play"></i>
-            </div>
-          </div>
-          <div class="album-info">
-            <h3 class="album-title">Her Heart</h3>
-            <span class="album-year">Coming 2025</span>
-            <div class="audio-preview">
-              <audio controls>
-                <source src="preview.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-            <div class="pre-save">
-              <a href="#" class="btn">Pre-save on Spotify</a>
-            </div>
-            <div class="album-links">
-              <a href="#" class="album-link"><i class="fab fa-spotify"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-apple"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
+      <div class="release">
+        <img src="her-heart-cover.jpg" alt="Her Heart" class="release__artwork">
+        <h2 class="section__title">Her Heart</h2>
+        <div class="release__links">
+          <!-- Streaming platform links -->
         </div>
       </div>
     </div>
   </section>
 
   <!-- Merch Section -->
-  <section class="section merch bg-cream-dark" id="merch">
+  <section class="section merch" id="merch">
     <div class="container">
-      <h2 class="section-title">Merchandise</h2>
-      
-      <div class="merch-grid">
-        <div class="merch-item">
-          <div class="merch-badge">SOLD OUT</div>
-          <img src="https://i.imgur.com/qc65jUa.jpeg" alt="KENOFISH T-Shirt" class="merch-image">
-          <div class="merch-info">
-            <h3 class="merch-title">Official KENOFISH T-Shirt</h3>
-            <p class="merch-price">£9.99</p>
-            <button class="btn btn-disabled">Notify When Available</button>
-          </div>
-        </div>
-        
-        <div class="merch-item coming-soon">
-          <div class="merch-badge">COMING SOON</div>
-          <img src="https://via.placeholder.com/800x800/F5F5DC/3D2B1F?text=KENOFISH+Vinyl" alt="KENOFISH Vinyl" class="merch-image">
-          <div class="merch-info">
-            <h3 class="merch-title">Limited Edition Vinyl</h3>
-            <p class="merch-price">£24.99</p>
-            <button class="btn btn-disabled">Coming Soon</button>
-          </div>
+      <h2 class="section__title">Exclusive Merch</h2>
+      <div class="merch__grid">
+        <div class="product">
+          <div class="product__badge">New</div>
+          <img src="https://i.imgur.com/qc65jUa.jpeg" alt="T-Shirt" class="product__image">
+          <!-- Product details -->
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Tour Section -->
-  <section class="section tour" id="tour">
-    <div class="container">
-      <h2 class="section-title">Tour Dates</h2>
-      <p class="text-center" id="staytuned">Stay tuned for upcoming shows</p>
-      
-      <div class="tour-grid">
-        <div class="tour-card">
-          <div class="tour-date">COMING SOON</div>
-          <div class="tour-info">
-            <div class="tour-location">More Dates Announced Soon</div>
-            <div class="tour-venue">Sign up to be the first to know</div>
-            <form class="mailing-list">
-              <input type="email" placeholder="Your email address" required>
-              <button type="submit" class="btn">Notify Me</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
-      
-      <div class="contact-container">
-        <div class="contact-info">
-          <h3>Contact & Booking</h3>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div>
-              <h4>Email</h4>
-              <p>bookings@kenofish.com</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div>
-              <h4>Join the Band</h4>
-              <p>auditions@kenofish.com</p>
-            </div>
-          </div>
-          <div class="contact-social">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-              <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
-              <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="contact-form">
-          <h3>Send Us a Message</h3>
-          <form id="contactForm">
-            <div class="form-group">
-              <input type="text" class="form-input" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-input" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-              <select class="form-input" required>
-                <option value="">What's this about?</option>
-                <option value="booking">Booking</option>
-                <option value="audition">Audition</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <textarea class="form-textarea" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Media Section -->
-  <section class="social-section">
-    <div class="container">
-      <h2 class="social-title">Connect With Us</h2>
-      <div class="social-links-container">
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-spotify"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-youtube"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-container">
-        <div class="footer-about">
-          <div class="footer-logo">
-            <img src="final.png" alt="KENOFISH Logo" class="footer-logo-img">
-            <span class="footer-logo-text">KENOFISH</span>
-          </div>
-          <p>Alternative/Indie Rock Band from London</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-spotify"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-          </div>
-        </div>
-        
-        <div class="footer-newsletter">
-          <h3 class="footer-title">Join Our Mailing List</h3>
-          <p>Get updates on new music, merch, and shows</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" required>
-            <button type="submit" class="btn">Subscribe</button>
-          </form>
-        </div>
-      </div>
-      
-      <div class="copyright">
-        <p>&copy; 2025 KENOFISH. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <a href="#home" class="back-to-top" id="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </a>
 
   <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const navLinks = document.getElementById('nav-links');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-        ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-      });
-    });
-    
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-      
-      // Back to top button visibility
-      const backToTopButton = document.getElementById('back-to-top');
-      if (window.scrollY > 300) {
-        backToTopButton.classList.add('visible');
-      } else {
-        backToTopButton.classList.remove('visible');
-      }
-    });
-    
-    // Audio player functionality
-    document.querySelectorAll('.play-overlay').forEach(overlay => {
-      overlay.addEventListener('click', (e) => {
-        e.preventDefault();
-        const audio = overlay.closest('.album-card').querySelector('audio');
-        const icon = overlay.querySelector('i');
-        if (audio.paused) {
-          audio.play();
-          icon.classList.remove('fa-play');
-          icon.classList.add('fa-pause');
-        } else {
-          audio.pause();
-          icon.classList.remove('fa-pause');
-          icon.classList.add('fa-play');
+    // Modern JavaScript with Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
       });
-    });
-    
-    // Form submission handlers
-    document.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Here you would typically send the form data to your server
-        alert('Thank you for your message! We\'ll get back to you soon.');
-        form.reset();
-      });
-    });
-    
-    // Smooth scrolling for anchor links
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
       });
+    });
+
+    // Mobile navigation
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
   </script>
 </body>
