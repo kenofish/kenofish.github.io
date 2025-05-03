@@ -1048,6 +1048,8 @@
         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
+
+    document.querySelector('.hero-btns .btn').addEventListener('click', () => {new Audio('videoplayback.mp3').play().catch(e => console.error('Audio playback failed:', e));});
     
     // Header scroll effect
     window.addEventListener('scroll', () => {
