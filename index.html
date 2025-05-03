@@ -227,15 +227,22 @@
 
     .hero__title {
       font-size: 8rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       animation: textReveal 1.5s var(--ease) forwards;
       opacity: 0;
     }
 
     .hero__subtitle {
-      font-size: 2.4rem;
-      margin-bottom: 4rem;
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
       animation: fadeInUp 1s var(--ease) 0.3s forwards;
+      opacity: 0;
+    }
+
+    .hero__text {
+      font-size: 2rem;
+      margin-bottom: 4rem;
+      animation: fadeInUp 1s var(--ease) 0.6s forwards;
       opacity: 0;
     }
 
@@ -243,7 +250,7 @@
       display: flex;
       gap: 2rem;
       justify-content: center;
-      animation: fadeInUp 1s var(--ease) 0.6s forwards;
+      animation: fadeInUp 1s var(--ease) 0.9s forwards;
       opacity: 0;
     }
 
@@ -253,11 +260,14 @@
       position: relative;
     }
 
-    .about__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8rem;
-      align-items: center;
+    .about__content p {
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      line-height: 1.8;
+    }
+
+    .about__content p:last-child {
+      margin-bottom: 0;
     }
 
     .about__image {
@@ -526,7 +536,11 @@
       }
 
       .hero__subtitle {
-        font-size: 2rem;
+        font-size: 2.4rem;
+      }
+
+      .hero__text {
+        font-size: 1.8rem;
       }
 
       .hero__cta {
@@ -555,6 +569,10 @@
     @media (max-width: 480px) {
       .hero__title {
         font-size: 4.8rem;
+      }
+
+      .hero__subtitle {
+        font-size: 2rem;
       }
 
       .section {
@@ -594,9 +612,10 @@
   <section class="hero" id="home">
     <div class="container hero__content">
       <h1 class="hero__title text-gradient">KENOFISH</h1>
-      <p class="hero__subtitle">Her Heart - Coming 2025</p>
+      <h2 class="hero__subtitle">Her Heart</h2>
+      <p class="hero__text">Coming soon to streaming platforms...</p>
       <div class="hero__cta">
-        <a href="#music" class="btn">Pre-Save Now</a>
+        <a href="#music" class="btn">Learn More</a>
         <a href="#merch" class="btn btn--outline">Shop Merch</a>
       </div>
     </div>
@@ -607,8 +626,11 @@
     <div class="container">
       <div class="about__grid">
         <div class="about__content">
-          <h2 class="section__title">Redefining Rock</h2>
-          <p>KENOFISH is an alternative rock band from London, blending raw energy with melodic sophistication. Since forming in 2020, we've been on a mission to create music that moves both the body and the soul.</p>
+          <h2 class="section__title">About KENOFISH</h2>
+          <p>KENOFISH are currently a two-piece alternative/indie rock band from just outside of London, consisting of founding members Matthew Sandfort (Guitar, Vocals) and James Ball (Drums).</p>
+          <p>Taking inspiration from all kinds of music genres, KENOFISH are rooted within that 90s rock feel, with a current vibe.</p>
+          <p>As it stands, the band is looking for two new members to join. A bass player and a guitarist to complete the full sound. If interested please contact us via our email or social media. Thank you.</p>
+          
           <div class="members">
             <div class="member">
               <img src="matthew.jpg" alt="Matthew Sandfort - Vocals & Guitar" class="member__image">
