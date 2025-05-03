@@ -60,6 +60,11 @@
       display: block;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     /* ========== UTILITY CLASSES ========== */
     .container {
       width: 100%;
@@ -78,6 +83,36 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.5rem 3rem;
+      background: var(--gradient);
+      color: white;
+      font-weight: 600;
+      border-radius: 5rem;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1.4rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+    }
+
+    .btn--outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn--outline:hover {
+      background: var(--primary);
+      color: white;
     }
 
     /* ========== COMPONENTS ========== */
@@ -153,6 +188,15 @@
       transform: translateX(0);
     }
 
+    .nav__toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2.4rem;
+      color: var(--secondary);
+      cursor: pointer;
+    }
+
     /* Hero Section */
     .hero {
       height: 100vh;
@@ -164,17 +208,6 @@
       color: var(--light);
       position: relative;
       overflow: hidden;
-    }
-
-    .hero__video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -1;
-      opacity: 0.2;
     }
 
     .hero__content {
@@ -196,6 +229,14 @@
       font-size: 2.4rem;
       margin-bottom: 4rem;
       animation: fadeInUp 1s var(--ease) 0.3s forwards;
+      opacity: 0;
+    }
+
+    .hero__cta {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      animation: fadeInUp 1s var(--ease) 0.6s forwards;
       opacity: 0;
     }
 
@@ -237,6 +278,11 @@
       background: white;
       border-radius: 1rem;
       box-shadow: var(--shadow-xl);
+      transition: transform 0.4s var(--ease);
+    }
+
+    .member:hover {
+      transform: translateY(-1rem);
     }
 
     .member__image {
@@ -246,6 +292,11 @@
       margin: 0 auto 2rem;
       object-fit: cover;
       border: 4px solid var(--primary);
+      transition: transform 0.4s var(--ease);
+    }
+
+    .member:hover .member__image {
+      transform: scale(1.05);
     }
 
     /* Music Section */
@@ -267,6 +318,18 @@
       margin: 0 auto 4rem;
       border-radius: 1rem;
       box-shadow: var(--shadow-xl);
+      transition: transform 0.4s var(--ease);
+    }
+
+    .release__artwork:hover {
+      transform: scale(1.05);
+    }
+
+    .release__links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
     }
 
     /* Merch Section */
@@ -286,7 +349,8 @@
       border-radius: 1rem;
       overflow: hidden;
       box-shadow: var(--shadow-xl);
-      transition: transform 0.4s var(--ease);
+      transition: all 0.4s var(--ease);
+      position: relative;
     }
 
     .product:hover {
@@ -303,11 +367,69 @@
       border-radius: 2rem;
       font-size: 1.2rem;
       font-weight: 700;
+      z-index: 2;
     }
 
     .product__image {
       height: 400px;
       object-fit: cover;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .product:hover .product__image {
+      transform: scale(1.05);
+    }
+
+    .product__content {
+      padding: 2rem;
+    }
+
+    .product__title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .product__price {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 2.2rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--secondary);
+      color: var(--light);
+      padding: 6rem 0;
+      text-align: center;
+    }
+
+    .footer__logo {
+      height: 8rem;
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+
+    .footer__social {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer__social-link {
+      font-size: 2.4rem;
+      color: var(--light);
+      transition: all 0.3s var(--ease);
+    }
+
+    .footer__social-link:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer__copyright {
+      opacity: 0.7;
+      font-size: 1.4rem;
     }
 
     /* ========== ANIMATIONS ========== */
@@ -333,8 +455,28 @@
       }
     }
 
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .float {
+      animation: float 4s ease-in-out infinite;
+    }
+
     /* ========== MEDIA QUERIES ========== */
     @media (max-width: 768px) {
+      .nav__toggle {
+        display: block;
+      }
+
       .nav__links {
         position: fixed;
         top: 8rem;
@@ -356,8 +498,22 @@
         font-size: 6rem;
       }
 
+      .hero__subtitle {
+        font-size: 2rem;
+      }
+
+      .hero__cta {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .about__grid {
         grid-template-columns: 1fr;
+      }
+
+      .release__links {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -367,29 +523,30 @@
   <nav class="nav" id="nav">
     <div class="container nav__content">
       <a href="#" class="nav__logo">
-        <img src="final.png" alt="KENOFISH" class="nav__logo-img">
+        <img src="final.png" alt="KENOFISH Logo" class="nav__logo-img">
       </a>
+      
+      <button class="nav__toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
       
       <ul class="nav__links" id="navLinks">
         <li><a href="#home" class="nav__link">Home</a></li>
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#music" class="nav__link">Music</a></li>
         <li><a href="#merch" class="nav__link">Merch</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <video autoplay muted loop class="hero__video">
-      <source src="band-performance.mp4" type="video/mp4">
-    </video>
     <div class="container hero__content">
       <h1 class="hero__title text-gradient">KENOFISH</h1>
       <p class="hero__subtitle">Her Heart - Coming 2025</p>
       <div class="hero__cta">
         <a href="#music" class="btn">Pre-Save Now</a>
+        <a href="#merch" class="btn btn--outline">Shop Merch</a>
       </div>
     </div>
   </section>
@@ -400,21 +557,22 @@
       <div class="about__grid">
         <div class="about__content">
           <h2 class="section__title">Redefining Rock</h2>
+          <p>KENOFISH is an alternative rock band from London, blending raw energy with melodic sophistication. Since forming in 2020, we've been on a mission to create music that moves both the body and the soul.</p>
           <div class="members">
             <div class="member">
-              <img src="matthew.jpg" alt="Matthew" class="member__image">
+              <img src="matthew.jpg" alt="Matthew Sandfort - Vocals & Guitar" class="member__image">
               <h3>Matthew Sandfort</h3>
               <p>Vocals & Guitar</p>
             </div>
             <div class="member">
-              <img src="james.jpg" alt="James" class="member__image">
+              <img src="james.jpg" alt="James Ball - Drums" class="member__image">
               <h3>James Ball</h3>
               <p>Drums</p>
             </div>
           </div>
         </div>
-        <div class="about__image">
-          <img src="band-photo.jpg" alt="KENOFISH">
+        <div class="about__image float">
+          <img src="band-photo.jpg" alt="KENOFISH band performing live">
         </div>
       </div>
     </div>
@@ -424,10 +582,12 @@
   <section class="section music" id="music">
     <div class="container">
       <div class="release">
-        <img src="her-heart-cover.jpg" alt="Her Heart" class="release__artwork">
+        <img src="her-heart-cover.jpg" alt="Her Heart - KENOFISH" class="release__artwork">
         <h2 class="section__title">Her Heart</h2>
+        <p>Our upcoming single "Her Heart" will be released in early 2025. Stay tuned for tour dates and more music!</p>
         <div class="release__links">
-          <!-- Streaming platform links -->
+          <a href="#" class="btn">Pre-Save on Spotify</a>
+          <a href="#" class="btn btn--outline">Apple Music</a>
         </div>
       </div>
     </div>
@@ -437,29 +597,79 @@
   <section class="section merch" id="merch">
     <div class="container">
       <h2 class="section__title">Exclusive Merch</h2>
+      <p>Show your support with our limited edition merchandise</p>
       <div class="merch__grid">
         <div class="product">
           <div class="product__badge">New</div>
-          <img src="https://i.imgur.com/qc65jUa.jpeg" alt="T-Shirt" class="product__image">
-          <!-- Product details -->
+          <img src="https://i.imgur.com/qc65jUa.jpeg" alt="KENOFISH T-Shirt" class="product__image">
+          <div class="product__content">
+            <h3 class="product__title">KENOFISH Logo Tee</h3>
+            <p class="product__price">£24.99</p>
+            <a href="#" class="btn" style="margin-top: 1.5rem; display: inline-block;">Buy Now</a>
+          </div>
+        </div>
+        <div class="product">
+          <div class="product__badge">Bestseller</div>
+          <img src="https://i.imgur.com/JqYeZRn.jpeg" alt="KENOFISH Hoodie" class="product__image">
+          <div class="product__content">
+            <h3 class="product__title">Tour Hoodie</h3>
+            <p class="product__price">£49.99</p>
+            <a href="#" class="btn" style="margin-top: 1.5rem; display: inline-block;">Buy Now</a>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://i.imgur.com/mQ4X5rU.jpeg" alt="KENOFISH Vinyl" class="product__image">
+          <div class="product__content">
+            <h3 class="product__title">Limited Vinyl</h3>
+            <p class="product__price">£29.99</p>
+            <a href="#" class="btn" style="margin-top: 1.5rem; display: inline-block;">Buy Now</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <img src="final-white.png" alt="KENOFISH" class="footer__logo">
+      <div class="footer__social">
+        <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer__social-link" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+      <p class="footer__copyright">© 2024 KENOFISH. All rights reserved.</p>
+    </div>
+  </footer>
+
   <script>
-    // Modern JavaScript with Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('nav__links--active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('nav__links--active');
       });
-    }, { threshold: 0.1 });
+    });
 
-    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+    // Scroll effect for navigation
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('nav--scrolled');
+      } else {
+        nav.classList.remove('nav--scrolled');
+      }
+    });
 
-    // Smooth scroll
+    // Smooth scroll for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -469,13 +679,30 @@
       });
     });
 
-    // Mobile navigation
-    const mobileMenu = document.getElementById('mobileMenu');
-    const navLinks = document.getElementById('navLinks');
+    // Animation on scroll
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.section__title, .about__content p, .member, .about__image, .release__artwork, .product');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
 
-    mobileMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    // Set initial styles for animated elements
+    document.querySelectorAll('.section__title, .about__content p, .member, .about__image, .release__artwork, .product').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s var(--ease)';
     });
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
   </script>
 </body>
 </html>
