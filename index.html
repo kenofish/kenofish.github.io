@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KENOFISH | Music</title>
+  <title>KENOFISH | Alternative Rock Experience</title>
+  <meta name="description" content="Official website of KENOFISH - London's alternative rock sensation. New single 'Her Heart' coming 2025.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,8 +48,8 @@
       
       /* Transitions */
       --transition-fast: 0.2s ease;
-      --transition-medium: 0.4s ease;
-      --transition-slow: 0.6s ease;
+      --transition-medium: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition-slow: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
     /* ========== BASE STYLES ========== */
@@ -147,12 +148,32 @@
       cursor: pointer;
       transition: var(--transition-medium);
       box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--orange-dark);
+      transform: translateX(-100%);
+      transition: transform var(--transition-medium);
+      z-index: -1;
     }
     
     .btn:hover {
-      background-color: var(--orange-dark);
+      color: var(--text-light);
       transform: translateY(-3px);
       box-shadow: var(--shadow-md);
+    }
+    
+    .btn:hover::before {
+      transform: translateX(0);
     }
     
     .btn-outline {
@@ -176,6 +197,10 @@
       transform: none;
       background-color: var(--gray-light);
       box-shadow: var(--shadow-sm);
+    }
+    
+    .btn-disabled::before {
+      display: none;
     }
     
     .text-center {
@@ -225,6 +250,7 @@
       background-color: rgba(245, 245, 220, 0.95);
       padding: var(--space-xs) 0;
       box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px);
     }
     
     .nav-container {
@@ -243,6 +269,11 @@
       height: 50px;
       width: auto;
       filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.2));
+      transition: transform var(--transition-medium);
+    }
+    
+    .logo:hover .logo-img {
+      transform: rotate(15deg);
     }
     
     .logo-text {
@@ -288,6 +319,11 @@
       color: var(--brown);
       font-size: 1.5rem;
       cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    
+    .mobile-menu-btn:hover {
+      color: var(--orange);
     }
     
     /* ========== HERO SECTION ========== */
@@ -301,12 +337,27 @@
       color: var(--text-light);
       text-align: center;
       padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+      z-index: 0;
     }
     
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
       padding: 0 var(--space-md);
+      position: relative;
+      z-index: 1;
     }
     
     .hero-title {
@@ -314,7 +365,8 @@
       font-weight: 900;
       margin-bottom: var(--space-md);
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      animation: fadeInDown 1s ease;
+      animation: fadeInDown 1s ease forwards;
+      opacity: 0;
     }
     
     .hero-subtitle {
@@ -322,14 +374,16 @@
       font-weight: 300;
       margin-bottom: var(--space-lg);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-      animation: fadeInUp 1s ease 0.2s both;
+      animation: fadeInUp 1s ease 0.2s forwards;
+      opacity: 0;
     }
     
     .hero-btns {
       display: flex;
       justify-content: center;
       gap: var(--space-md);
-      animation: fadeIn 1s ease 0.4s both;
+      animation: fadeIn 1s ease 0.4s forwards;
+      opacity: 0;
     }
     
     /* ========== ABOUT SECTION ========== */
@@ -375,6 +429,42 @@
     
     .about-text {
       padding-right: var(--space-md);
+    }
+    
+    .band-members {
+      display: flex;
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+    
+    .member {
+      text-align: center;
+    }
+    
+    .member-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--orange);
+      margin-bottom: var(--space-sm);
+      transition: var(--transition-medium);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .member-image:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .member-name {
+      font-size: 1.2rem;
+      margin-bottom: var(--space-xs);
+    }
+    
+    .member-role {
+      color: var(--orange);
+      font-weight: 600;
     }
     
     .about-image {
@@ -433,10 +523,20 @@
       box-shadow: var(--shadow-lg);
     }
     
+    .album-image-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
     .album-image {
       height: 300px;
       width: 100%;
       object-fit: cover;
+      transition: var(--transition-medium);
+    }
+    
+    .album-card:hover .album-image {
+      transform: scale(1.05);
     }
     
     .album-info {
@@ -469,12 +569,13 @@
       background-color: var(--orange);
       color: var(--text-light);
       border-radius: 50%;
-      transition: var(--transition-fast);
+      transition: var(--transition-medium);
     }
     
     .album-link:hover {
       background-color: var(--orange-dark);
       transform: translateY(-3px);
+      box-shadow: var(--shadow-orange);
     }
     
     /* ========== MERCH SECTION ========== */
@@ -482,11 +583,11 @@
       background-color: var(--cream);
     }
     
-    .merch-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-lg);
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-lg);
     }
     
     .merch-item {
@@ -494,13 +595,37 @@
       border-radius: 8px;
       overflow: hidden;
       box-shadow: var(--shadow-md);
-      max-width: 400px;
-      width: 100%;
+      transition: var(--transition-medium);
+      position: relative;
+    }
+    
+    .merch-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .merch-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--orange);
+      color: var(--text-light);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 1;
     }
     
     .merch-image {
       width: 100%;
-      height: auto;
+      height: 400px;
+      object-fit: cover;
+      transition: var(--transition-medium);
+    }
+    
+    .merch-item:hover .merch-image {
+      transform: scale(1.02);
     }
     
     .merch-info {
@@ -546,7 +671,11 @@
       overflow: hidden;
       box-shadow: var(--shadow-md);
       transition: var(--transition-medium);
-      opacity: 0.7;
+    }
+    
+    .tour-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
     }
     
     .tour-date {
@@ -644,6 +773,69 @@
       margin-top: 4px;
     }
     
+    .contact-social {
+      margin-top: var(--space-lg);
+    }
+    
+    .contact-social h4 {
+      margin-bottom: var(--space-sm);
+    }
+    
+    .contact-social .social-links {
+      display: flex;
+      gap: var(--space-sm);
+    }
+    
+    .contact-social a {
+      color: var(--orange);
+      font-size: 1.5rem;
+      transition: var(--transition-fast);
+    }
+    
+    .contact-social a:hover {
+      color: var(--orange-dark);
+    }
+    
+    .contact-form {
+      background-color: var(--white);
+      padding: var(--space-lg);
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .form-group {
+      margin-bottom: var(--space-md);
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-weight: 600;
+      color: var(--brown);
+    }
+    
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: var(--space-sm);
+      border: 1px solid var(--cream-darker);
+      border-radius: 4px;
+      font-family: var(--font-body);
+      transition: var(--transition-fast);
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+      box-shadow: 0 0 0 2px rgba(255,140,66,0.2);
+    }
+    
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
     /* ========== FOOTER ========== */
     .footer {
       background-color: var(--brown);
@@ -707,6 +899,22 @@
       padding-left: 5px;
     }
     
+    .footer-social {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+    
+    .footer-social a {
+      color: var(--cream);
+      font-size: 1.2rem;
+      transition: var(--transition-fast);
+    }
+    
+    .footer-social a:hover {
+      color: var(--orange);
+    }
+    
     .copyright {
       text-align: center;
       margin-top: var(--space-xl);
@@ -766,6 +974,10 @@
         grid-template-columns: 1fr;
         gap: var(--space-lg);
       }
+      
+      .band-members {
+        justify-content: center;
+      }
     }
     
     @media (max-width: 768px) {
@@ -818,6 +1030,11 @@
         height: 50px;
         font-size: 1.3rem;
       }
+      
+      .band-members {
+        flex-direction: column;
+        align-items: center;
+      }
     }
     
     @media (max-width: 576px) {
@@ -867,9 +1084,9 @@
   <section class="hero bg-brown" id="home">
     <div class="hero-content">
       <h1 class="hero-title">KENOFISH</h1>
-      <p class="hero-subtitle">Her Heart<br>Coming soon to streaming platforms...</p>
+      <p class="hero-subtitle">Her Heart - Coming 2025</p>
       <div class="hero-btns">
-        <a href="#music" class="btn">LISTEN EVERYONE</a>
+        <a href="#music" class="btn pulse">Listen Now</a>
       </div>
     </div>
   </section>
@@ -880,12 +1097,26 @@
       <h2 class="section-title">About The Band</h2>
       <div class="about-content">
         <div class="about-text">
-          <p>Kenofish are currently a two-piece alternative/indie rock band from just outside of London, consisting of founding members Matthew Sandfort (Guitar, Vocals) and James Ball (Drums).</p>
-          <p>Taking inspiration from all kinds of music genres, Kenofish are rooted within that 90s rock feel, with a current vibe.</p>
-          <p>As it stands, the band is looking for two new members to join. A bass player and a guitarist to complete the full sound. If interested please contact us via our email or social media. Thank you.</p>
+          <p>KENOFISH are currently a two-piece alternative/indie rock band from just outside of London, consisting of founding members Matthew Sandfort (Guitar, Vocals) and James Ball (Drums).</p>
+          
+          <div class="band-members">
+            <div class="member">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Matthew Sandfort" class="member-image">
+              <h4 class="member-name">Matthew Sandfort</h4>
+              <p class="member-role">Guitar & Vocals</p>
+            </div>
+            <div class="member">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="James Ball" class="member-image">
+              <h4 class="member-name">James Ball</h4>
+              <p class="member-role">Drums</p>
+            </div>
+          </div>
+          
+          <p>Taking inspiration from all kinds of music genres, KENOFISH are rooted within that 90s rock feel, with a current vibe.</p>
+          <p>As it stands, the band is looking for two new members to join. A bass player and a guitarist to complete the full sound. If interested please contact us via our email or social media.</p>
         </div>
         <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KENOFISH performing live">
+          <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="KENOFISH performing live">
         </div>
       </div>
     </div>
@@ -897,9 +1128,10 @@
       <h2 class="section-title">Our Music</h2>
       
       <div class="music-grid">
-        <!-- Album -->
         <div class="album-card">
-          <img src="https://i.imgur.com/47YZvbR.jpeg" alt="Her Heart Cover" class="album-image">
+          <div class="album-image-container">
+            <img src="https://i.imgur.com/47YZvbR.jpeg" alt="Her Heart Cover" class="album-image">
+          </div>
           <div class="album-info">
             <h3 class="album-title">Her Heart</h3>
             <span class="album-year">2025</span>
@@ -907,6 +1139,7 @@
             <div class="album-links">
               <a href="#" class="album-link"><i class="fab fa-spotify"></i></a>
               <a href="#" class="album-link"><i class="fab fa-apple"></i></a>
+              <a href="#" class="album-link"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
         </div>
@@ -919,14 +1152,24 @@
     <div class="container">
       <h2 class="section-title">Merchandise</h2>
       
-      <div class="merch-container">
+      <div class="merch-grid">
         <div class="merch-item">
-          <img src="https://i.imgur.com/qc65jUa.jpeg" class="merch-image">
+          <div class="merch-badge">SOLD OUT</div>
+          <img src="https://i.imgur.com/qc65jUa.jpeg" alt="KENOFISH T-Shirt" class="merch-image">
           <div class="merch-info">
             <h3 class="merch-title">Official KENOFISH T-Shirt</h3>
             <p class="merch-price">£9.99</p>
-            <p>High quality cotton t-shirt with the official KENOFISH logo</p>
-            <button class="btn btn-disabled">SOLD OUT</button>
+            <button class="btn btn-disabled">Notify When Available</button>
+          </div>
+        </div>
+        
+        <div class="merch-item">
+          <div class="merch-badge">COMING SOON</div>
+          <img src="https://images.unsplash.com/photo-1568219656418-15c329312bf1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="KENOFISH Vinyl" class="merch-image">
+          <div class="merch-info">
+            <h3 class="merch-title">Limited Edition Vinyl</h3>
+            <p class="merch-price">£24.99</p>
+            <button class="btn btn-disabled">Coming Soon</button>
           </div>
         </div>
       </div>
@@ -940,7 +1183,6 @@
       <p class="text-center" id="staytuned">Stay tuned for upcoming shows</p>
       
       <div class="tour-grid">
-        <!-- Coming Soon Date -->
         <div class="tour-card">
           <div class="tour-date">COMING SOON</div>
           <div class="tour-info">
