@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KENOFISH | Alternative Rock Band</title>
+  <title>KENOFISH | Music</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,6 @@
       --text-dark: #2A2A2A;
       --gray: #888888;
       --gray-light: #CCCCCC;
-      --gray-lighter: #F0F0F0;
       
       /* Typography */
       --font-heading: 'Playfair Display', serif;
@@ -137,7 +136,7 @@
       display: inline-block;
       padding: var(--space-sm) var(--space-lg);
       background-color: var(--orange);
-      color: var(--text-light) !important;
+      color: var(--text-light);
       border: none;
       border-radius: 50px;
       font-family: var(--font-body);
@@ -152,7 +151,6 @@
     
     .btn:hover {
       background-color: var(--orange-dark);
-      color: var(--text-light) !important;
       transform: translateY(-3px);
       box-shadow: var(--shadow-md);
     }
@@ -160,17 +158,17 @@
     .btn-outline {
       background-color: transparent;
       border: 2px solid var(--orange);
-      color: var(--orange) !important;
+      color: var(--orange);
     }
     
     .btn-outline:hover {
       background-color: var(--orange);
-      color: var(--text-light) !important;
+      color: var(--text-light);
     }
     
     .btn-disabled {
       background-color: var(--gray-light);
-      color: var(--gray) !important;
+      color: var(--gray);
       cursor: not-allowed;
     }
     
@@ -178,7 +176,6 @@
       transform: none;
       background-color: var(--gray-light);
       box-shadow: var(--shadow-sm);
-      color: var(--gray) !important;
     }
     
     .text-center {
@@ -225,10 +222,9 @@
     }
     
     .header.scrolled {
-      background-color: rgba(245, 245, 220, 0.98);
+      background-color: rgba(245, 245, 220, 0.95);
       padding: var(--space-xs) 0;
       box-shadow: var(--shadow-md);
-      backdrop-filter: blur(5px);
     }
     
     .nav-container {
@@ -241,18 +237,12 @@
       display: flex;
       align-items: center;
       gap: var(--space-sm);
-      transition: var(--transition-medium);
-    }
-    
-    .logo:hover {
-      transform: scale(1.05);
     }
     
     .logo-img {
       height: 50px;
       width: auto;
       filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.2));
-      transition: var(--transition-medium);
     }
     
     .logo-text {
@@ -261,7 +251,6 @@
       font-weight: 700;
       color: var(--brown);
       text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-      transition: var(--transition-medium);
     }
     
     .nav-links {
@@ -275,7 +264,6 @@
       font-weight: 600;
       color: var(--brown);
       padding: var(--space-xs) 0;
-      transition: var(--transition-fast);
     }
     
     .nav-link::after {
@@ -289,10 +277,6 @@
       transition: var(--transition-fast);
     }
     
-    .nav-link:hover {
-      color: var(--orange);
-    }
-    
     .nav-link:hover::after {
       width: 100%;
     }
@@ -304,12 +288,6 @@
       color: var(--brown);
       font-size: 1.5rem;
       cursor: pointer;
-      transition: var(--transition-fast);
-      z-index: 1001;
-    }
-    
-    .mobile-menu-btn:hover {
-      color: var(--orange);
     }
     
     /* ========== HERO SECTION ========== */
@@ -319,47 +297,31 @@
       display: flex;
       align-items: center;
       background: linear-gradient(rgba(61, 43, 31, 0.7), rgba(61, 43, 31, 0.7)), 
-                  url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+                  url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
       color: var(--text-light);
       text-align: center;
       padding-top: 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
-      z-index: 0;
     }
     
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
       padding: 0 var(--space-md);
-      position: relative;
-      z-index: 1;
     }
     
     .hero-title {
       font-size: 4rem;
       font-weight: 900;
       margin-bottom: var(--space-md);
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-      animation: fadeInDown 1s ease both;
-      line-height: 1.1;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      animation: fadeInDown 1s ease;
     }
     
     .hero-subtitle {
       font-size: 1.5rem;
       font-weight: 300;
       margin-bottom: var(--space-lg);
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       animation: fadeInUp 1s ease 0.2s both;
     }
     
@@ -387,7 +349,6 @@
       opacity: 0.1;
       border-radius: 50%;
       z-index: 0;
-      animation: pulse 15s infinite alternate;
     }
     
     .about::after {
@@ -401,7 +362,6 @@
       opacity: 0.1;
       border-radius: 50%;
       z-index: 0;
-      animation: pulse 18s infinite alternate-reverse;
     }
     
     .about-content {
@@ -426,16 +386,8 @@
       transition: var(--transition-medium);
     }
     
-    .about-image img {
-      transition: var(--transition-medium);
-    }
-    
     .about-image:hover {
       transform: rotate(0deg);
-    }
-    
-    .about-image:hover img {
-      transform: scale(1.05);
     }
     
     .about-image::before {
@@ -459,20 +411,6 @@
     /* ========== MUSIC SECTION ========== */
     .music {
       background-color: var(--cream-dark);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .music::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,140,66,0.05) 0%, rgba(255,140,66,0) 70%);
-      z-index: 0;
     }
     
     .music-grid {
@@ -480,8 +418,6 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: var(--space-xl);
       margin-top: var(--space-lg);
-      position: relative;
-      z-index: 1;
     }
     
     .album-card {
@@ -490,7 +426,6 @@
       overflow: hidden;
       box-shadow: var(--shadow-md);
       transition: var(--transition-medium);
-      position: relative;
     }
     
     .album-card:hover {
@@ -502,24 +437,15 @@
       height: 300px;
       width: 100%;
       object-fit: cover;
-      transition: var(--transition-medium);
-    }
-    
-    .album-card:hover .album-image {
-      transform: scale(1.03);
     }
     
     .album-info {
       padding: var(--space-md);
-      background-color: var(--white);
-      position: relative;
-      z-index: 1;
     }
     
     .album-title {
       font-size: 1.5rem;
       margin-bottom: var(--space-sm);
-      color: var(--brown);
     }
     
     .album-year {
@@ -548,27 +474,12 @@
     
     .album-link:hover {
       background-color: var(--orange-dark);
-      transform: translateY(-3px) scale(1.1);
-      box-shadow: var(--shadow-orange);
+      transform: translateY(-3px);
     }
     
     /* ========== MERCH SECTION ========== */
     .merch {
       background-color: var(--cream);
-      position: relative;
-    }
-    
-    .merch::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-      background-color: var(--orange);
-      opacity: 0.05;
-      border-radius: 50%;
-      z-index: 0;
     }
     
     .merch-container {
@@ -576,8 +487,6 @@
       flex-direction: column;
       align-items: center;
       gap: var(--space-lg);
-      position: relative;
-      z-index: 1;
     }
     
     .merch-item {
@@ -587,22 +496,11 @@
       box-shadow: var(--shadow-md);
       max-width: 400px;
       width: 100%;
-      transition: var(--transition-medium);
-    }
-    
-    .merch-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
     }
     
     .merch-image {
       width: 100%;
       height: auto;
-      transition: var(--transition-medium);
-    }
-    
-    .merch-item:hover .merch-image {
-      transform: scale(1.02);
     }
     
     .merch-info {
@@ -613,7 +511,6 @@
     .merch-title {
       font-size: 1.5rem;
       margin-bottom: var(--space-sm);
-      color: var(--brown);
     }
     
     .merch-price {
@@ -626,27 +523,10 @@
     /* ========== TOUR SECTION ========== */
     .tour {
       background-color: var(--brown);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .tour::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: -100px;
-      width: 300px;
-      height: 300px;
-      background-color: var(--orange);
-      opacity: 0.1;
-      border-radius: 50%;
-      z-index: 0;
     }
     
     .tour .section-title {
       color: var(--text-light);
-      position: relative;
-      z-index: 1;
     }
     
     .tour .section-title::after {
@@ -658,8 +538,6 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: var(--space-md);
       margin-top: var(--space-lg);
-      position: relative;
-      z-index: 1;
     }
     
     .tour-card {
@@ -669,12 +547,6 @@
       box-shadow: var(--shadow-md);
       transition: var(--transition-medium);
       opacity: 0.7;
-    }
-    
-    .tour-card:hover {
-      opacity: 1;
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
     }
     
     .tour-date {
@@ -692,7 +564,6 @@
     .tour-location {
       font-weight: 700;
       margin-bottom: var(--space-xs);
-      color: var(--brown);
     }
     
     .tour-venue {
@@ -710,27 +581,12 @@
       background-color: var(--brown);
       padding: var(--space-xl) 0;
       text-align: center;
-      position: relative;
-    }
-    
-    .social-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      opacity: 0.1;
-      z-index: 0;
     }
     
     .social-title {
       color: var(--text-light);
       font-size: 2rem;
       margin-bottom: var(--space-lg);
-      position: relative;
-      z-index: 1;
     }
     
     .social-links-container {
@@ -738,8 +594,6 @@
       justify-content: center;
       gap: var(--space-md);
       flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
     }
     
     .social-link {
@@ -764,29 +618,12 @@
     /* ========== CONTACT SECTION ========== */
     .contact {
       background-color: var(--cream-dark);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .contact::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-      background-color: var(--orange);
-      opacity: 0.05;
-      border-radius: 50%;
-      z-index: 0;
     }
     
     .contact-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-xl);
-      position: relative;
-      z-index: 1;
     }
     
     .contact-info {
@@ -799,24 +636,12 @@
       display: flex;
       align-items: flex-start;
       gap: var(--space-sm);
-      transition: var(--transition-fast);
-      padding: var(--space-sm);
-      border-radius: 8px;
-    }
-    
-    .contact-item:hover {
-      background-color: rgba(255,255,255,0.3);
     }
     
     .contact-icon {
       color: var(--orange);
       font-size: 1.5rem;
       margin-top: 4px;
-      transition: var(--transition-fast);
-    }
-    
-    .contact-item:hover .contact-icon {
-      transform: scale(1.2);
     }
     
     /* ========== FOOTER ========== */
@@ -824,27 +649,12 @@
       background-color: var(--brown);
       color: var(--text-light);
       padding: var(--space-xl) 0;
-      position: relative;
-    }
-    
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      opacity: 0.05;
-      z-index: 0;
     }
     
     .footer-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: var(--space-xl);
-      position: relative;
-      z-index: 1;
     }
     
     .footer-logo {
@@ -852,27 +662,21 @@
       align-items: center;
       gap: var(--space-sm);
       margin-bottom: var(--space-md);
-      transition: var(--transition-medium);
-    }
-    
-    .footer-logo:hover {
-      transform: translateX(5px);
     }
     
     .footer-logo-img {
       height: 40px;
       width: auto;
-      transition: var(--transition-medium);
-    }
-    
-    .footer-logo:hover .footer-logo-img {
-      transform: rotate(15deg);
     }
     
     .footer-logo-text {
       font-family: var(--font-heading);
       font-size: 1.5rem;
       color: var(--text-light);
+    }
+
+    #staytuned {
+      color: white;
     }
     
     .footer-about {
@@ -891,17 +695,11 @@
     
     .footer-link {
       margin-bottom: var(--space-xs);
-      transition: var(--transition-fast);
-    }
-    
-    .footer-link:hover {
-      transform: translateX(5px);
     }
     
     .footer-link a {
       color: var(--cream);
       transition: var(--transition-fast);
-      display: inline-block;
     }
     
     .footer-link a:hover {
@@ -914,8 +712,6 @@
       margin-top: var(--space-xl);
       padding-top: var(--space-md);
       border-top: 1px solid rgba(255,255,255,0.1);
-      position: relative;
-      z-index: 1;
     }
     
     /* ========== ANIMATIONS ========== */
@@ -927,7 +723,7 @@
     @keyframes fadeInDown {
       from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-20px);
       }
       to {
         opacity: 1;
@@ -938,35 +734,11 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
-      }
-    }
-    
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-      100% {
-        transform: translateY(0px);
       }
     }
     
@@ -1064,10 +836,6 @@
       .logo-text {
         font-size: 1.5rem;
       }
-      
-      .hero {
-        min-height: 700px;
-      }
     }
   </style>
 </head>
@@ -1076,7 +844,7 @@
   <header class="header" id="header">
     <div class="container nav-container">
       <a href="#" class="logo">
-        <img src="https://i.imgur.com/JQJxZzT.png" alt="KENOFISH Logo" class="logo-img">
+        <img src="final.png" alt="KENO FISH Logo" class="logo-img">
         <span class="logo-text">KENOFISH</span>
       </a>
       
@@ -1101,8 +869,7 @@
       <h1 class="hero-title">KENOFISH</h1>
       <p class="hero-subtitle">Her Heart<br>Coming soon to streaming platforms...</p>
       <div class="hero-btns">
-        <a href="#music" class="btn">LISTEN NOW</a>
-        <a href="#tour" class="btn btn-outline">TOUR DATES</a>
+        <a href="#music" class="btn">LISTEN EVERYONE</a>
       </div>
     </div>
   </section>
@@ -1114,12 +881,11 @@
       <div class="about-content">
         <div class="about-text">
           <p>Kenofish are currently a two-piece alternative/indie rock band from just outside of London, consisting of founding members Matthew Sandfort (Guitar, Vocals) and James Ball (Drums).</p>
-          <p>Taking inspiration from all kinds of music genres, Kenofish are rooted within that 90s rock feel, with a current vibe that resonates with modern audiences. Our sound blends raw energy with melodic sophistication.</p>
+          <p>Taking inspiration from all kinds of music genres, Kenofish are rooted within that 90s rock feel, with a current vibe.</p>
           <p>As it stands, the band is looking for two new members to join. A bass player and a guitarist to complete the full sound. If interested please contact us via our email or social media. Thank you.</p>
-          <a href="#contact" class="btn">Join The Band</a>
         </div>
         <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KENOFISH performing live">
+          <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KENOFISH performing live">
         </div>
       </div>
     </div>
@@ -1129,34 +895,18 @@
   <section class="section music" id="music">
     <div class="container">
       <h2 class="section-title">Our Music</h2>
-      <p class="text-center">Experience the raw energy and emotional depth of our alternative rock sound</p>
       
       <div class="music-grid">
         <!-- Album -->
         <div class="album-card">
-          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Her Heart Cover" class="album-image">
+          <img src="https://i.imgur.com/47YZvbR.jpeg" alt="Her Heart Cover" class="album-image">
           <div class="album-info">
             <h3 class="album-title">Her Heart</h3>
             <span class="album-year">2025</span>
-            <p>Our debut single blending raw emotion with powerful instrumentation. Coming soon to all major streaming platforms.</p>
+            <p>Coming soon to all major streaming platforms</p>
             <div class="album-links">
               <a href="#" class="album-link"><i class="fab fa-spotify"></i></a>
               <a href="#" class="album-link"><i class="fab fa-apple"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-youtube"></i></a>
-              <a href="#" class="album-link"><i class="fab fa-soundcloud"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Coming Soon Album -->
-        <div class="album-card">
-          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coming Soon" class="album-image">
-          <div class="album-info">
-            <h3 class="album-title">Untitled EP</h3>
-            <span class="album-year">Coming 2025</span>
-            <p>Our first EP featuring 5 new tracks that showcase our evolving sound and lyrical depth.</p>
-            <div class="album-links">
-              <button class="album-link" disabled><i class="fas fa-clock"></i></button>
             </div>
           </div>
         </div>
@@ -1168,15 +918,14 @@
   <section class="section merch bg-cream-dark" id="merch">
     <div class="container">
       <h2 class="section-title">Merchandise</h2>
-      <p class="text-center">Show your support with our official band merchandise</p>
       
       <div class="merch-container">
         <div class="merch-item">
-          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KENOFISH T-Shirt" class="merch-image">
+          <img src="https://i.imgur.com/qc65jUa.jpeg" class="merch-image">
           <div class="merch-info">
             <h3 class="merch-title">Official KENOFISH T-Shirt</h3>
             <p class="merch-price">£9.99</p>
-            <p>High quality 100% cotton t-shirt with the official KENOFISH logo screen printed for durability.</p>
+            <p>High quality cotton t-shirt with the official KENOFISH logo</p>
             <button class="btn btn-disabled">SOLD OUT</button>
           </div>
         </div>
@@ -1191,6 +940,7 @@
       <p class="text-center" id="staytuned">Stay tuned for upcoming shows</p>
       
       <div class="tour-grid">
+        <!-- Coming Soon Date -->
         <div class="tour-card">
           <div class="tour-date">COMING SOON</div>
           <div class="tour-info">
