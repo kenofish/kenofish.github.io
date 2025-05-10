@@ -133,6 +133,7 @@
       border-radius: 2px;
     }
     
+/* Regular button state */
 .btn {
   display: inline-block;
   padding: var(--space-sm) var(--space-lg);
@@ -148,15 +149,26 @@
   cursor: pointer;
   transition: var(--transition-medium);
   box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Hover state */
 .btn:hover {
   background-color: var(--orange-dark);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
-    
-   .btn-outline {
+
+/* Active (pressed) state - THIS FIXES THE BLANKING */
+.btn:active {
+  background-color: var(--orange-darker);
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Outline button variant */
+.btn-outline {
   background-color: transparent;
   border: 2px solid var(--orange);
   color: var(--orange);
@@ -167,17 +179,24 @@
   color: var(--text-light);
   border-color: var(--orange);
 }
-    
-   .btn-disabled {
+
+.btn-outline:active {
+  background-color: var(--orange-dark);
+  border-color: var(--orange-dark);
+}
+
+/* Disabled button state */
+.btn-disabled {
   background-color: var(--gray-light);
   color: var(--gray);
   cursor: not-allowed;
 }
 
-.btn-disabled:hover {
-  transform: none;
+.btn-disabled:hover,
+.btn-disabled:active {
   background-color: var(--gray-light);
   color: var(--gray);
+  transform: none;
   box-shadow: var(--shadow-sm);
 }
     
