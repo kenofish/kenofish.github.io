@@ -133,12 +133,12 @@
       border-radius: 2px;
     }
     
-/* Regular button state */
+/* Base Button Styles */
 .btn {
   display: inline-block;
   padding: var(--space-sm) var(--space-lg);
   background-color: var(--orange);
-  color: var(--text-light);
+  color: var(--text-light) !important; /* Force text color */
   border: none;
   border-radius: 50px;
   font-family: var(--font-body);
@@ -147,57 +147,59 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: var(--transition-medium);
+  transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
 }
 
-/* Hover */
+/* Hover State */
 .btn:hover {
   background-color: var(--orange-dark);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+  color: var(--text-light) !important;
 }
 
-/* Active (pressed) state - THIS FIXES THE BLANKING */
+/* Active (Pressed) State - Critical Fix */
 .btn:active {
-  background-color: var(--orange-darker);
+  background-color: var(--orange-darker) !important;
   transform: translateY(1px);
   box-shadow: var(--shadow-sm);
+  color: var(--text-light) !important;
 }
 
-/* Outline button variant */
+/* Outline Button Variant */
 .btn-outline {
   background-color: transparent;
   border: 2px solid var(--orange);
-  color: var(--orange);
+  color: var(--orange) !important;
 }
 
 .btn-outline:hover {
   background-color: var(--orange);
-  color: var(--text-light);
-  border-color: var(--orange);
+  color: var(--text-light) !important;
 }
 
 .btn-outline:active {
-  background-color: var(--orange-dark);
-  border-color: var(--orange-dark);
+  background-color: var(--orange-dark) !important;
+  color: var(--text-light) !important;
 }
 
-/* Disabled button state */
+/* Disabled Button State */
 .btn-disabled {
-  background-color: var(--gray-light);
-  color: var(--gray);
+  background-color: var(--gray-light) !important;
+  color: var(--gray) !important;
   cursor: not-allowed;
 }
 
 .btn-disabled:hover,
 .btn-disabled:active {
-  background-color: var(--gray-light);
-  color: var(--gray);
-  transform: none;
-  box-shadow: var(--shadow-sm);
+  background-color: var(--gray-light) !important;
+  color: var(--gray) !important;
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
 }
     
     .text-center {
