@@ -50,6 +50,9 @@
       --transition-fast: 0.2s ease;
       --transition-medium: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       --transition-slow: 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
     }
     
     /* ========== BASE STYLES ========== */
@@ -57,7 +60,14 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
     }
+
+    body, .container, section {
+  position: static !important;
+  z-index: auto !important;
+}
     
     html {
       scroll-behavior: smooth;
@@ -138,7 +148,7 @@
   display: inline-block;
   padding: var(--space-sm) var(--space-lg);
   background-color: var(--orange);
-  color: var(--text-light) !important; /* Force text color */
+  color: var(--text-light);
   border: none;
   border-radius: 50px;
   font-family: var(--font-body);
@@ -147,11 +157,8 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-medium);
   box-shadow: var(--shadow-sm);
-  position: relative;
-  overflow: hidden;
-  -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
 }
 
 /* Hover State */
@@ -159,47 +166,46 @@
   background-color: var(--orange-dark);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
-  color: var(--text-light) !important;
+  color: var(--text-light);
 }
 
-/* Active (Pressed) State - Critical Fix */
+/* Active (Pressed) State */
 .btn:active {
-  background-color: var(--orange-darker) !important;
+  background-color: var(--orange-darker);
   transform: translateY(1px);
   box-shadow: var(--shadow-sm);
-  color: var(--text-light) !important;
 }
 
 /* Outline Button Variant */
 .btn-outline {
   background-color: transparent;
   border: 2px solid var(--orange);
-  color: var(--orange) !important;
+  color: var(--orange);
 }
 
 .btn-outline:hover {
   background-color: var(--orange);
-  color: var(--text-light) !important;
+  color: var(--text-light);
 }
 
 .btn-outline:active {
-  background-color: var(--orange-dark) !important;
-  color: var(--text-light) !important;
+  background-color: var(--orange-dark);
+  color: var(--text-light);
 }
 
 /* Disabled Button State */
 .btn-disabled {
-  background-color: var(--gray-light) !important;
-  color: var(--gray) !important;
+  background-color: var(--gray-light);
+  color: var(--gray);
   cursor: not-allowed;
 }
 
 .btn-disabled:hover,
 .btn-disabled:active {
-  background-color: var(--gray-light) !important;
-  color: var(--gray) !important;
-  transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
+  background-color: var(--gray-light);
+  color: var(--gray);
+  transform: none;
+  box-shadow: var(--shadow-sm);
 }
     
     .text-center {
@@ -431,26 +437,31 @@
     }
     
     .band-members {
-      display: flex;
-      gap: var(--space-md);
-      margin: var(--space-xl) 0;
-    }
-    
-    .member {
-      text-align: center;
-    }
-    
-    .member-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--orange);
-      margin-bottom: var(--space-sm);
-      transition: var(--transition-medium);
-      box-shadow: var(--shadow-md);
-    }
-    
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin: var(--space-xl) 0;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 160px;
+}
+
+.member-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--orange);
+  margin-bottom: var(--space-sm);
+  transition: var(--transition-medium);
+  box-shadow: var(--shadow-md);
+}
     .member-image:hover {
       transform: scale(1.05);
       box-shadow: var(--shadow-lg);
@@ -705,43 +716,86 @@
     }
     
     /* ========== SOCIAL MEDIA SECTION ========== */
-    .social-section {
-      background-color: var(--brown);
-      padding: var(--space-xl) 0;
-      text-align: center;
-    }
-    
-    .social-title {
-      color: var(--text-light);
-      font-size: 2rem;
-      margin-bottom: var(--space-lg);
-    }
-    
-    .social-links-container {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-md);
-      flex-wrap: wrap;
-    }
-    
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background-color: var(--orange);
-      color: var(--text-light);
-      border-radius: 50%;
-      font-size: 1.5rem;
-      transition: var(--transition-medium);
-    }
-    
-    .social-link:hover {
-      background-color: var(--orange-dark);
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: var(--shadow-orange);
-    }
+.social-section {
+  background-color: var(--brown);
+  padding: var(--space-xxl) 0;
+  text-align: center;
+  position: relative;
+  /* Create new stacking context */
+  isolation: isolate;
+}
+
+.social-title {
+  color: var(--text-light);
+  font-size: 2rem;
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.social-links-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  position: relative;
+  /* Ensure this stays above everything */
+  z-index: 50;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--orange);
+  color: var(--text-light) !important; /* Force white color */
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  /* Critical z-index for button */
+  z-index: 100;
+  overflow: visible; /* Changed from hidden */
+  border: 2px solid rgba(255,255,255,0.3);
+  /* Force GPU rendering */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Hover effect */
+.social-link:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+  color: var(--text-light) !important;
+  background-color: var(--orange-dark);
+  border-color: white;
+}
+
+/* Active/pressed effect */
+.social-link:active {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 10px rgba(255, 140, 66, 0.6);
+}
+
+/* Fix for Font Awesome icons */
+.social-link i {
+  position: relative;
+  z-index: 2;
+}
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
     
     /* ========== CONTACT SECTION ========== */
     .contact {
@@ -956,9 +1010,43 @@
       }
       
       .about-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-      }
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .about-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .social-link {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  
+  .social-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .social-links-container {
+    gap: var(--space-sm);
+  }
+  
+  .social-link {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+}
       
       .about-text {
         padding-right: 0;
@@ -1234,25 +1322,13 @@
       <div class="merch-grid">
         <div class="merch-item">
   <div class="merch-badge">SOLD OUT</div>
-  <img src="https://i.imgur.com/qc65jUa.jpeg" alt="KENOFISH T-Shirt" class="merch-image">
+  <img src="https://i.imgur.com/MAdJUY0.png" alt="KENOFISH T-Shirt" class="merch-image">
   <div class="merch-info">
     <h3 class="merch-title">Official KENOFISH T-Shirt</h3>
     <p class="merch-price">£9.99</p>
     <button class="btn btn-disabled">Sold Out</button>
   </div>
 </div>
-        
-        <div class="merch-item">
-          <div class="merch-badge">COMING SOON</div>
-          <img src="https://images.unsplash.com/photo-1568219656418-15c329312bf1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="KENOFISH Vinyl" class="merch-image">
-          <div class="merch-info">
-            <h3 class="merch-title">Limited Edition Vinyl</h3>
-            <p class="merch-price">£24.99</p>
-            <button class="btn btn-disabled">Coming Soon</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- Tour Section -->
@@ -1296,29 +1372,34 @@
     </div>
   </section>
 
-  <!-- Social Media Section -->
-  <section class="social-section">
-    <div class="container">
-      <h2 class="social-title">Connect With Us</h2>
-      <div class="social-links-container">
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-spotify"></i>
-        </a>
-        <a href="#" class="social-link" target="_blank">
-          <i class="fab fa-apple"></i>
-        </a>
-      </div>
+  <<!-- Social Media Section -->
+<section class="social-section">
+  <div class="container">
+    <h2 class="social-title">Connect With Us</h2>
+    <div class="social-links-container">
+      <a href="https://instagram.com/kenofishband" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+        <span class="sr-only">Instagram</span>
+      </a>
+      <a href="https://facebook.com/kenofishband" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook-f"></i>
+        <span class="sr-only">Facebook</span>
+      </a>
+      <a href="https://tiktok.com/@kenofishband" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-tiktok"></i>
+        <span class="sr-only">TikTok</span>
+      </a>
+      <a href="https://open.spotify.com/artist/your-spotify-id" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-spotify"></i>
+        <span class="sr-only">Spotify</span>
+      </a>
+      <a href="https://music.apple.com/us/artist/kenofish/your-apple-id" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-apple"></i>
+        <span class="sr-only">Apple Music</span>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -1369,6 +1450,25 @@
         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
+
+    document.querySelectorAll('.social-link').forEach(link => {
+  // Prevent clicks if href is just "#"
+  link.addEventListener('click', (e) => {
+    if (link.getAttribute('href') === '#') {
+      e.preventDefault();
+      alert('Social link coming soon! Follow us @kenofishband');
+    }
+  });
+  
+  // Add pulse animation on hover
+  link.addEventListener('mouseenter', () => {
+    link.style.animation = 'pulse 0.5s ease';
+  });
+  
+  link.addEventListener('mouseleave', () => {
+    link.style.animation = '';
+  });
+});
 
     document.querySelector('.hero-btns .btn').addEventListener('click', () => {new Audio('videoplayback.mp3').play().catch(e => console.error('Audio playback failed:', e));});
     
