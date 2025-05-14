@@ -520,18 +520,30 @@
       margin-top: var(--space-lg);
     }
     
-    .album-card {
-      background-color: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition-medium);
-    }
-    
-    .album-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-lg);
-    }
+    /* ========== ALBUM COVER FIX ========== */
+.album-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Creates 1:1 aspect ratio */
+  overflow: hidden;
+  background-color: var(--cream-darker); /* Fallback color */
+}
+
+.album-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Changed from 'cover' to 'contain' */
+  transition: var(--transition-medium);
+  background-color: white; /* For transparent PNGs */
+  padding: 10%; /* Adds breathing room around image */
+}
+
+.album-card:hover .album-image {
+  transform: scale(1.03); /* More subtle hover effect */
+}
     
     .album-image-container {
       position: relative;
@@ -600,60 +612,134 @@
       margin-top: var(--space-lg);
     }
     
-    .merch-item {
-      background-color: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition-medium);
-      position: relative;
-    }
-    
-    .merch-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .merch-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: var(--orange);
-      color: var(--text-light);
-      padding: var(--space-xs) var(--space-sm);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      z-index: 1;
-    }
-    
-    .merch-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      transition: var(--transition-medium);
-    }
-    
-    .merch-item:hover .merch-image {
-      transform: scale(1.02);
-    }
-    
-    .merch-info {
-      padding: var(--space-md);
-      text-align: center;
-    }
-    
-    .merch-title {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .merch-price {
-      font-size: 1.2rem;
-      color: var(--orange);
-      font-weight: 700;
-      margin-bottom: var(--space-md);
-    }
+    /* ========== MERCH SECTION ========== */
+.merch {
+  background-color: var(--cream-dark);
+  padding: var(--space-xxl) 0;
+}
+
+.merch .section-title {
+  color: var(--brown);
+}
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-lg);
+  justify-items: center;
+}
+
+.merch-item {
+  max-width: 320px;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-medium);
+  display: flex;
+  flex-direction: column;
+}
+
+.merch-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 125%; /* T-shirt aspect ratio */
+  background-color: #f8f8f8; /* Shirt background */
+  overflow: hidden;
+}
+
+.merch-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 15% 15% 25%; /* Extra bottom space for shirt shape */
+  transition: var(--transition-medium);
+}
+
+.merch-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: var(--orange);
+  color: var(--text-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.merch-info {
+  padding: var(--space-md);
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.merch-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+  color: var(--brown);
+}
+
+.merch-price {
+  font-size: 1.1rem;
+  color: var(--orange);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+/* Hover Effects */
+.merch-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.merch-item:hover .merch-image {
+  transform: scale(1.03);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .merch-item {
+    max-width: 280px;
+  }
+  
+  .merch-image {
+    padding: 12% 12% 22%;
+  }
+}
+
+@media (max-width: 768px) {
+  .merch-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+  
+  .merch-item {
+    max-width: 100%;
+  }
+  
+  .merch-image {
+    padding: 10% 10% 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .merch-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .merch-image {
+    padding: 8% 8% 18%;
+  }
+}
     
     /* ========== TOUR SECTION ========== */
     .tour {
@@ -1047,6 +1133,20 @@
     font-size: 1.1rem;
   }
 }
+
+      @media (max-width: 768px) {
+  .album-image {
+    padding: 5%; /* Less padding on mobile */
+  }
+  
+  .merch-image {
+    padding: 10%; /* Less padding on mobile */
+  }
+  
+  .merch-image-container {
+    padding-top: 120%; /* Slightly different aspect ratio for mobile */
+  }
+}
       
       .about-text {
         padding-right: 0;
@@ -1283,7 +1383,7 @@
           <p>As it stands, the band is looking for two new members to join. A bass player and a guitarist to complete the full sound. If interested please contact us via our email or social media.</p>
         </div>
         <div class="about-image">
-          <img src="https://i1.sndcdn.com/artworks-R0vM9iDQFb7Jem7g-cTkgdw-t500x500.jpg" alt="KENOFISH performing live">
+          <img src="https://i.imgur.com/UO9L7Ag.jpeg" alt="KENOFISH performing live">
         </div>
       </div>
     </div>
