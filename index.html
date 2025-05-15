@@ -508,46 +508,40 @@
       left: 15px;
     }
     
-    /* ========== MUSIC SECTION ========== */
-.music {
-  background-color: var(--cream-dark);
-  padding: var(--space-xxl) 0;
-}
-
+    /* ========== MODERN ALBUM SECTION ========== */
 .music-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-xl);
-  margin-top: var(--space-lg);
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .album-card {
-  max-width: 300px;
-  width: 100%;
-  background-color: var(--white);
+  background: white;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: var(--transition-medium);
+  position: relative;
+  isolation: isolate;
 }
 
 .album-image-container {
-  position: relative;
-  width: 100%;
-  padding-top: 100%; /* 1:1 Aspect Ratio */
-  background-color: var(--cream-darker);
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, var(--cream-darker) 0%, var(--cream-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
 }
 
 .album-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 15%;
-  background-color: white;
+  position: relative;
+  z-index: 1;
   transition: var(--transition-medium);
 }
 
@@ -557,8 +551,8 @@
 }
 
 .album-title {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-sm);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
   color: var(--brown);
 }
 
@@ -566,7 +560,7 @@
   display: block;
   color: var(--orange);
   font-weight: 600;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .album-links {
@@ -585,15 +579,18 @@
   color: var(--text-light);
   border-radius: 50%;
   transition: var(--transition-medium);
+  position: relative;
+  z-index: 2; /* Fixed z-index */
+  transform: translateZ(0); /* GPU layer */
 }
 
+/* Bulletproof Hover Effects */
 .album-link:hover {
   background-color: var(--orange-dark);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-orange);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
 }
 
-/* Hover Effects */
 .album-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
@@ -602,87 +599,102 @@
 .album-card:hover .album-image {
   transform: scale(1.03);
 }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .music-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .album-image {
-    padding: 10%;
-  }
+    
+/* ========== ULTRA-COMPACT MERCH ========== */
+.merch {
+  background-color: var(--cream-dark);
+  padding: var(--space-lg) 0;
 }
-    
-/* ========== MERCH SECTION ========== */
-    .merch {
-      background-color: var(--cream);
-    }
-    
-    .merch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-xl);
-      margin-top: var(--space-lg);
-    }
-    
-    .merch-item {
-      background-color: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition-medium);
-      position: relative;
-    }
-    
-    .merch-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .merch-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: var(--orange);
-      color: var(--text-light);
-      padding: var(--space-xs) var(--space-sm);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      z-index: 1;
-    }
-    
-    .merch-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      transition: var(--transition-medium);
-    }
-    
-    .merch-item:hover .merch-image {
-      transform: scale(1.02);
-    }
-    
-    .merch-info {
-      padding: var(--space-md);
-      text-align: center;
-    }
-    
-    .merch-title {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .merch-price {
-      font-size: 1.2rem;
-      color: var(--orange);
-      font-weight: 700;
-      margin-bottom: var(--space-md);
-    }
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.merch-item {
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-medium);
+  position: relative;
+  isolation: isolate;
+}
+
+.merch-image-container {
+  height: 300px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  padding: 8%;
+}
+
+.merch-image {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.merch-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--orange);
+  color: white;
+  padding: 2px 10px;
+  font-size: 0.7rem;
+  border-radius: 12px;
+  font-weight: 700;
+  z-index: 3;
+}
+
+.merch-info {
+  padding: 12px;
+  text-align: center;
+}
+
+.merch-title {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.merch-price {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* FOOTER-BUTTON-PROVEN STYLES */
+.merch-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: var(--orange);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  position: relative;
+  z-index: 2;
+  transform: translateZ(0); /* GPU layer */
+}
+
+.merch-btn:hover {
+  background-color: var(--orange-dark);
+  transform: translateY(-2px);
+}
+
+.merch-btn:active {
+  transform: translateY(0);
+}
     
     /* ========== TOUR SECTION ========== */
     .tour {
